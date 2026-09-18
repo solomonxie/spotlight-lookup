@@ -1,0 +1,13 @@
+[
+  {
+    "front": "idempotent",
+    "back": "Running it twice changes nothing more than running it once.",
+    "tags": "engineering"
+  },
+  {
+    "front": "一期一会",
+    "reading": "いちごいちえ",
+    "back": "One meeting, one chance — treat every encounter as unrepeatable.",
+    "tags": "japanese, idiom"
+  }
+]
