@@ -106,20 +106,26 @@ export async function syncSpotlight(
     onProgress?.({ phase: 'removing', done: removed, total: tombstones.length });
   }
 
-  const collections = await db.getAllAsync<{ id: string; index_limit: number; indexed_count: number }>(
+  const collections = await db.getAllAsync<{
+    id: string;
+    index_limit: number;
+    indexed_count: number;
+    pending_count: number;
+  }>(
     `SELECT c.id, c.index_limit,
-            (SELECT COUNT(*) FROM entries e WHERE e.collection_id = c.id AND e.indexed_at IS NOT NULL) AS indexed_count
+            (SELECT COUNT(*) FROM entries e WHERE e.collection_id = c.id AND e.indexed_at IS NOT NULL) AS indexed_count,
+            (SELECT COUNT(*) FROM entries e WHERE e.collection_id = c.id AND e.indexed_at IS NULL) AS pending_count
      FROM collections c WHERE c.indexed = 1`
   );
 
+  const roomFor = (collection: { index_limit: number; indexed_count: number; pending_count: number }) =>
+    Math.max(0, Math.min(collection.pending_count, collection.index_limit - collection.indexed_count));
+
   let indexed = 0;
-  const total = collections.reduce(
-    (sum, c) => sum + Math.max(0, c.index_limit - c.indexed_count),
-    0
-  );
+  const total = collections.reduce((sum, collection) => sum + roomFor(collection), 0);
 
   for (const collection of collections) {
-    const room = collection.index_limit - collection.indexed_count;
+    const room = roomFor(collection);
     if (room <= 0) continue;
 
     const pending = await db.getAllAsync<PendingRow>(
