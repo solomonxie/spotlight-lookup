@@ -40,7 +40,11 @@ export default function RootLayout() {
     const pending = takePendingOpen();
     if (pending) open(pending);
 
-    const subscription = addOpenListener((event) => open(event.id));
+    const subscription = addOpenListener((event) => {
+      // Drain the buffer too, so a later JS reload does not replay this tap.
+      takePendingOpen();
+      open(event.id);
+    });
     return () => subscription?.remove();
   }, [ready, router]);
 

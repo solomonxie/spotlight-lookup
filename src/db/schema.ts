@@ -3,6 +3,8 @@
  * and the triggers below keep the index in step, which matters when a dictionary
  * import adds six figures of rows.
  */
+export const SCHEMA_VERSION = 1;
+
 export const SCHEMA = `
 PRAGMA journal_mode = WAL;
 PRAGMA foreign_keys = ON;
@@ -40,27 +42,33 @@ CREATE VIRTUAL TABLE IF NOT EXISTS entries_fts USING fts5(
   term,
   reading,
   definition,
+  example,
   tags,
   content = 'entries',
   content_rowid = 'rowid',
   tokenize = 'unicode61 remove_diacritics 2'
 );
 
-CREATE TRIGGER IF NOT EXISTS entries_fts_insert AFTER INSERT ON entries BEGIN
-  INSERT INTO entries_fts (rowid, term, reading, definition, tags)
-  VALUES (new.rowid, new.term, new.reading, new.definition, new.tags);
+DROP TRIGGER IF EXISTS entries_fts_insert;
+CREATE TRIGGER entries_fts_insert AFTER INSERT ON entries BEGIN
+  INSERT INTO entries_fts (rowid, term, reading, definition, example, tags)
+  VALUES (new.rowid, new.term, new.reading, new.definition, new.example, new.tags);
 END;
 
-CREATE TRIGGER IF NOT EXISTS entries_fts_delete AFTER DELETE ON entries BEGIN
-  INSERT INTO entries_fts (entries_fts, rowid, term, reading, definition, tags)
-  VALUES ('delete', old.rowid, old.term, old.reading, old.definition, old.tags);
+DROP TRIGGER IF EXISTS entries_fts_delete;
+CREATE TRIGGER entries_fts_delete AFTER DELETE ON entries BEGIN
+  INSERT INTO entries_fts (entries_fts, rowid, term, reading, definition, example, tags)
+  VALUES ('delete', old.rowid, old.term, old.reading, old.definition, old.example, old.tags);
 END;
 
-CREATE TRIGGER IF NOT EXISTS entries_fts_update AFTER UPDATE ON entries BEGIN
-  INSERT INTO entries_fts (entries_fts, rowid, term, reading, definition, tags)
-  VALUES ('delete', old.rowid, old.term, old.reading, old.definition, old.tags);
-  INSERT INTO entries_fts (rowid, term, reading, definition, tags)
-  VALUES (new.rowid, new.term, new.reading, new.definition, new.tags);
+-- Scoped to the indexed columns: a sync run stamps indexed_at on every entry it
+-- pushes, and an unscoped trigger would rewrite the whole FTS index alongside it.
+DROP TRIGGER IF EXISTS entries_fts_update;
+CREATE TRIGGER entries_fts_update AFTER UPDATE OF term, reading, definition, example, tags ON entries BEGIN
+  INSERT INTO entries_fts (entries_fts, rowid, term, reading, definition, example, tags)
+  VALUES ('delete', old.rowid, old.term, old.reading, old.definition, old.example, old.tags);
+  INSERT INTO entries_fts (rowid, term, reading, definition, example, tags)
+  VALUES (new.rowid, new.term, new.reading, new.definition, new.example, new.tags);
 END;
 
 -- Deleting a row loses the identifier Spotlight still holds, so park it here first.
@@ -69,7 +77,8 @@ CREATE TABLE IF NOT EXISTS index_tombstones (
   created_at INTEGER NOT NULL
 );
 
-CREATE TRIGGER IF NOT EXISTS entries_tombstone AFTER DELETE ON entries
+DROP TRIGGER IF EXISTS entries_tombstone;
+CREATE TRIGGER entries_tombstone AFTER DELETE ON entries
 WHEN old.indexed_at IS NOT NULL BEGIN
   INSERT OR REPLACE INTO index_tombstones (entry_id, created_at)
   VALUES (old.id, CAST(strftime('%s', 'now') AS INTEGER) * 1000);
