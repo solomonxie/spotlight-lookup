@@ -68,6 +68,12 @@ Two things worth knowing:
   collection has a **max entries** cap (20,000 by default). Frequency-ordered dictionaries work best.
 - Items are indexed with no expiration date. iOS otherwise drops untouched entries after a month.
 
+## Design
+
+Every screen, state, overlay and the Spotlight result row itself is drawn in
+`docs/design/uiux/` — start at its README for the screen map. A change that
+moves the UI updates the drawing in the same commit.
+
 ## Known limits
 
 - CJK headwords match exactly and by prefix; FTS5's `unicode61` tokenizer does not segment Chinese or
