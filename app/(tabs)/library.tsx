@@ -23,7 +23,7 @@ import { CollectionStats } from '@/src/db/types';
 import { ImportPreview, parseImportFile } from '@/src/lib/importers';
 import { syncSpotlight } from '@/src/spotlight/sync';
 import { Button, Card, EmptyState, Field, Pill } from '@/src/ui/components';
-import { radius, spacing, useTheme } from '@/src/ui/theme';
+import { spacing, useTheme } from '@/src/ui/theme';
 
 type PendingImport = {
   fileName: string;
