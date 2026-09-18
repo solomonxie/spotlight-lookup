@@ -85,7 +85,15 @@ export default function SettingsScreen() {
         ) : null}
       </Card>
 
-      <SectionHeader title="Indexing" />
+      <SectionHeader
+        title="Indexing"
+        info={{
+          title: 'Indexing',
+          body:
+            'New and edited entries are pushed to Spotlight in the background. Per-collection ' +
+            'limits and language tags live on each collection in Library.',
+        }}
+      />
       <Card>
         <View style={styles.row}>
           <Text style={[styles.label, { color: colors.text }]}>Sync on launch</Text>
@@ -98,10 +106,6 @@ export default function SettingsScreen() {
             }}
           />
         </View>
-        <Text style={[styles.hint, { color: colors.muted }]}>
-          New and edited entries are pushed to Spotlight in the background. Per-collection limits and
-          language tags live on each collection in Library.
-        </Text>
       </Card>
 
       <View style={styles.actions}>
@@ -128,7 +132,6 @@ const styles = StyleSheet.create({
   row: { flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' },
   label: { fontSize: 15 },
   value: { fontSize: 15, fontWeight: '700', fontVariant: ['tabular-nums'] },
-  hint: { fontSize: 13, lineHeight: 18 },
   progress: { fontSize: 13, fontWeight: '600' },
   actions: { gap: spacing.md, marginTop: spacing.xl },
 });

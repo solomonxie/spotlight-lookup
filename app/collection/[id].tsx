@@ -116,11 +116,14 @@ export default function CollectionScreen() {
               keyboardType="number-pad"
               value={draft.indexLimit}
               onChangeText={(indexLimit) => setDraft({ ...draft, indexLimit })}
+              info={{
+                title: 'Why a cap',
+                body:
+                  'Core Spotlight slows down on very large indexes. A cap keeps a big dictionary ' +
+                  'usable by indexing only its first N entries, which works best when the file is ' +
+                  'ordered by frequency.',
+              }}
             />
-            <Text style={[styles.hint, { color: colors.muted }]}>
-              Core Spotlight slows down on very large indexes; a cap keeps a big dictionary usable by
-              indexing only its first N entries.
-            </Text>
             <Button title="Save" onPress={save} />
           </Card>
 
