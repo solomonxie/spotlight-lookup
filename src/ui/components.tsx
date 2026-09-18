@@ -1,6 +1,7 @@
-import { ReactNode } from 'react';
+import { ReactNode, useState } from 'react';
 import {
   ActivityIndicator,
+  Modal,
   Pressable,
   StyleProp,
   StyleSheet,
@@ -28,11 +29,55 @@ export function Card({ children, style }: { children: ReactNode; style?: StylePr
   );
 }
 
-export function SectionHeader({ title, action }: { title: string; action?: ReactNode }) {
+export type InfoNote = { title: string; body: string };
+
+/**
+ * Keeps the reasoning off the screen. Only state worth reading every visit stays
+ * inline; the why, the caveats and the "what happens if" live one tap away.
+ */
+export function InfoButton({ note }: { note: InfoNote }) {
+  const { colors } = useTheme();
+  const [open, setOpen] = useState(false);
+
+  return (
+    <>
+      <Pressable
+        accessibilityRole="button"
+        accessibilityLabel={`About ${note.title}`}
+        hitSlop={10}
+        onPress={() => setOpen(true)}>
+        <Text style={[styles.info, { color: colors.accent }]}>ⓘ</Text>
+      </Pressable>
+
+      <Modal visible={open} transparent animationType="fade" onRequestClose={() => setOpen(false)}>
+        <Pressable style={styles.popoverBackdrop} onPress={() => setOpen(false)}>
+          <View style={[styles.popover, { backgroundColor: colors.card, borderColor: colors.border }]}>
+            <Text style={[styles.popoverTitle, { color: colors.text }]}>{note.title}</Text>
+            <Text style={[styles.popoverBody, { color: colors.muted }]}>{note.body}</Text>
+            <Button title="Got it" variant="secondary" onPress={() => setOpen(false)} />
+          </View>
+        </Pressable>
+      </Modal>
+    </>
+  );
+}
+
+export function SectionHeader({
+  title,
+  info,
+  action,
+}: {
+  title: string;
+  info?: InfoNote;
+  action?: ReactNode;
+}) {
   const { colors } = useTheme();
   return (
     <View style={styles.sectionHeader}>
-      <Text style={[styles.sectionTitle, { color: colors.muted }]}>{title.toUpperCase()}</Text>
+      <View style={styles.sectionTitleRow}>
+        <Text style={[styles.sectionTitle, { color: colors.muted }]}>{title.toUpperCase()}</Text>
+        {info ? <InfoButton note={info} /> : null}
+      </View>
       {action}
     </View>
   );
@@ -92,13 +137,17 @@ export function Button({ title, onPress, variant = 'primary', disabled, loading,
 
 export function Field({
   label,
+  info,
   style,
   ...props
-}: TextInputProps & { label: string; style?: StyleProp<TextStyle> }) {
+}: TextInputProps & { label: string; info?: InfoNote; style?: StyleProp<TextStyle> }) {
   const { colors } = useTheme();
   return (
     <View style={styles.field}>
-      <Text style={[styles.fieldLabel, { color: colors.muted }]}>{label}</Text>
+      <View style={styles.sectionTitleRow}>
+        <Text style={[styles.fieldLabel, { color: colors.muted }]}>{label}</Text>
+        {info ? <InfoButton note={info} /> : null}
+      </View>
       <TextInput
         placeholderTextColor={colors.muted}
         {...props}
@@ -149,6 +198,25 @@ const styles = StyleSheet.create({
     marginTop: spacing.lg,
   },
   sectionTitle: { fontSize: 12, fontWeight: '700', letterSpacing: 0.8 },
+  sectionTitleRow: { flexDirection: 'row', alignItems: 'center', gap: spacing.sm },
+  info: { fontSize: 14, fontWeight: '600' },
+  popoverBackdrop: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: spacing.xl,
+    backgroundColor: 'rgba(0,0,0,0.35)',
+  },
+  popover: {
+    width: '100%',
+    maxWidth: 340,
+    borderRadius: radius.lg,
+    borderWidth: StyleSheet.hairlineWidth,
+    padding: spacing.lg,
+    gap: spacing.md,
+  },
+  popoverTitle: { fontSize: 16, fontWeight: '700' },
+  popoverBody: { fontSize: 14, lineHeight: 20 },
   pill: {
     borderRadius: radius.pill,
     borderWidth: StyleSheet.hairlineWidth,
