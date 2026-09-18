@@ -1,5 +1,6 @@
 import { createId } from '../lib/id';
-import { getDatabase } from './database';
+import { editDistance, normalizeSearchText, trigrams, typoBudget } from '../lib/normalize';
+import { SQLiteDatabase, getDatabase } from './database';
 import { CollectionKind, Entry, EntryWithCollection, NewEntry } from './types';
 
 type EntryRow = {
@@ -13,6 +14,8 @@ type EntryRow = {
   created_at: number;
   updated_at: number;
   indexed_at: number | null;
+  term_norm: string;
+  reading_norm: string;
 };
 
 type JoinedEntryRow = EntryRow & {
@@ -46,34 +49,65 @@ const JOIN_SELECT = `
   FROM entries e JOIN collections c ON c.id = e.collection_id
 `;
 
-/**
- * Wildcards are stripped rather than escaped: an ESCAPE clause would stop SQLite
- * from answering the prefix match out of the `term COLLATE NOCASE` index.
- */
-const likePrefix = (query: string) => `${query.replace(/[%_]/g, '')}%`;
+/** Precise tiers first; `fuzzy` only runs when they came up short. */
+const RANK = { exact: 0, prefix: 1, words: 2, substring: 3, fuzzy: 4 } as const;
+
+/** Enough precise hits on screen means a typo pass would only add noise. */
+const FUZZY_TRIGGER = 8;
+const FUZZY_CANDIDATES = 200;
+
+const phrase = (value: string) => `"${value.replace(/"/g, '""')}"`;
 
 const ftsQuery = (query: string): string | null => {
   const cleaned = query.replace(/"/g, '""').trim();
   return /[\p{L}\p{N}]/u.test(cleaned) ? `"${cleaned}"*` : null;
 };
 
+/**
+ * Five tiers over two indexes. `term_norm` and `reading_norm` hold the query-shaped
+ * form of each entry — lower case, no tone marks, no spaces — so `xiexie` reaches
+ * 谢谢 and `cafe` reaches `café` without the user producing the diacritics.
+ */
 export async function searchEntries(query: string, limit = 60): Promise<EntryWithCollection[]> {
   const trimmed = query.trim();
   if (!trimmed) return [];
 
   const db = await getDatabase();
-  const fts = ftsQuery(trimmed);
-  const branches = [
-    'SELECT id, 0 AS rank FROM entries WHERE term = ? COLLATE NOCASE',
-    'SELECT id, 1 AS rank FROM entries WHERE term LIKE ?',
-  ];
-  const params: (string | number)[] = [trimmed, likePrefix(trimmed)];
+  const norm = normalizeSearchText(trimmed);
+  const branches = ['SELECT id, 0 AS rank FROM entries WHERE term = ? COLLATE NOCASE'];
+  const params: (string | number)[] = [trimmed];
 
+  if (norm) {
+    branches.push(
+      `SELECT id, ${RANK.exact} AS rank FROM entries WHERE term_norm = ? OR reading_norm = ?`,
+      `SELECT id, ${RANK.prefix} AS rank FROM entries WHERE term_norm LIKE ? OR reading_norm LIKE ?`
+    );
+    params.push(norm, norm, `${norm}%`, `${norm}%`);
+  }
+
+  const fts = ftsQuery(trimmed);
   if (fts) {
     branches.push(
-      'SELECT id, 2 AS rank FROM entries WHERE rowid IN (SELECT rowid FROM entries_fts WHERE entries_fts MATCH ?)'
+      `SELECT id, ${RANK.words} AS rank FROM entries
+       WHERE rowid IN (SELECT rowid FROM entries_fts WHERE entries_fts MATCH ?)`
     );
     params.push(fts);
+  }
+
+  if (norm.length >= 3) {
+    branches.push(
+      `SELECT id, ${RANK.substring} AS rank FROM entries
+       WHERE rowid IN (SELECT rowid FROM entries_fuzzy WHERE entries_fuzzy MATCH ?)`
+    );
+    params.push(phrase(norm));
+  } else if (norm) {
+    // A trigram index cannot represent a one- or two-character query, which is most
+    // of Chinese. Those scan instead — the columns are headwords, so it stays cheap.
+    branches.push(
+      `SELECT id, ${RANK.substring} AS rank FROM entries
+       WHERE term_norm LIKE ? OR reading_norm LIKE ?`
+    );
+    params.push(`%${norm}%`, `%${norm}%`);
   }
   params.push(limit);
 
@@ -89,7 +123,56 @@ export async function searchEntries(query: string, limit = 60): Promise<EntryWit
      LIMIT ?`,
     params
   );
-  return rows.map(toJoinedEntry);
+
+  const results = rows.map(toJoinedEntry);
+  if (results.length >= FUZZY_TRIGGER || results.length >= limit || norm.length < 3) {
+    return results;
+  }
+
+  const seen = new Set(results.map((entry) => entry.id));
+  const near = await fuzzyMatches(db, norm, seen, limit - results.length);
+  return [...results, ...near];
+}
+
+/**
+ * Trigram overlap finds the candidates, edit distance decides. A misspelling still
+ * shares most of its three-character runs with the word meant, so `resilent` reaches
+ * `resilient`; bm25 puts the best overlap first and the distance budget cuts the rest.
+ */
+async function fuzzyMatches(
+  db: SQLiteDatabase,
+  norm: string,
+  seen: Set<string>,
+  limit: number
+): Promise<EntryWithCollection[]> {
+  const budget = typoBudget(norm.length);
+  const grams = trigrams(norm);
+  if (budget === 0 || grams.length === 0 || limit <= 0) return [];
+
+  const rows = await db.getAllAsync<JoinedEntryRow>(
+    `SELECT e.*, c.name AS collection_name, c.kind AS collection_kind, c.indexed AS collection_indexed
+     FROM entries_fuzzy
+     JOIN entries e ON e.rowid = entries_fuzzy.rowid
+     JOIN collections c ON c.id = e.collection_id
+     WHERE entries_fuzzy MATCH ?
+     ORDER BY bm25(entries_fuzzy) ASC
+     LIMIT ?`,
+    [grams.map(phrase).join(' OR '), FUZZY_CANDIDATES]
+  );
+
+  return rows
+    .filter((row) => !seen.has(row.id))
+    .map((row) => ({
+      row,
+      distance: Math.min(
+        editDistance(norm, row.term_norm, budget),
+        row.reading_norm ? editDistance(norm, row.reading_norm, budget) : budget + 1
+      ),
+    }))
+    .filter((hit) => hit.distance <= budget)
+    .sort((a, b) => a.distance - b.distance || a.row.term.length - b.row.term.length)
+    .slice(0, limit)
+    .map((hit) => toJoinedEntry(hit.row));
 }
 
 export async function getEntry(id: string): Promise<EntryWithCollection | null> {
@@ -152,8 +235,9 @@ export async function createEntry(input: NewEntry): Promise<Entry> {
     indexedAt: null,
   };
   await db.runAsync(
-    `INSERT INTO entries (id, collection_id, term, reading, definition, example, tags, created_at, updated_at, indexed_at)
-     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NULL)`,
+    `INSERT INTO entries (id, collection_id, term, reading, definition, example, tags,
+                          created_at, updated_at, indexed_at, term_norm, reading_norm)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, ?, ?)`,
     [
       entry.id,
       entry.collectionId,
@@ -164,6 +248,8 @@ export async function createEntry(input: NewEntry): Promise<Entry> {
       entry.tags,
       entry.createdAt,
       entry.updatedAt,
+      normalizeSearchText(entry.term),
+      normalizeSearchText(entry.reading),
     ]
   );
   return entry;
@@ -171,28 +257,36 @@ export async function createEntry(input: NewEntry): Promise<Entry> {
 
 export async function updateEntry(id: string, patch: Partial<NewEntry>): Promise<void> {
   const db = await getDatabase();
-  const columns: Record<string, string> = {
-    term: 'term',
-    reading: 'reading',
-    definition: 'definition',
-    example: 'example',
-    tags: 'tags',
-  };
-  const assignments: string[] = [];
-  const values: (string | number | null)[] = [];
+  const current = await db.getFirstAsync<EntryRow>('SELECT * FROM entries WHERE id = ?', [id]);
+  if (!current) return;
 
-  for (const [key, column] of Object.entries(columns)) {
-    const value = patch[key as keyof NewEntry];
-    if (value === undefined) continue;
-    assignments.push(`${column} = ?`);
-    values.push(typeof value === 'string' ? value.trim() || null : value);
-  }
-  if (assignments.length === 0) return;
+  const optional = (value: string | null | undefined, fallback: string | null) =>
+    value === undefined ? fallback : (value?.trim() ?? '') || null;
+  const required = (value: string | undefined, fallback: string) =>
+    value === undefined ? fallback : value.trim() || fallback;
 
-  // Editing the text invalidates whatever Spotlight already holds for this entry.
-  assignments.push('updated_at = ?', 'indexed_at = NULL');
-  values.push(Date.now(), id);
-  await db.runAsync(`UPDATE entries SET ${assignments.join(', ')} WHERE id = ?`, values);
+  const term = required(patch.term, current.term);
+  const reading = optional(patch.reading, current.reading);
+
+  // Rewritten whole rather than patched: the normalised columns depend on two of the
+  // fields, so a partial update would need to read the row back anyway.
+  await db.runAsync(
+    `UPDATE entries
+     SET term = ?, reading = ?, definition = ?, example = ?, tags = ?,
+         term_norm = ?, reading_norm = ?, updated_at = ?, indexed_at = NULL
+     WHERE id = ?`,
+    [
+      term,
+      reading,
+      required(patch.definition, current.definition),
+      optional(patch.example, current.example),
+      optional(patch.tags, current.tags),
+      normalizeSearchText(term),
+      normalizeSearchText(reading),
+      Date.now(),
+      id,
+    ]
+  );
 }
 
 export async function deleteEntry(id: string): Promise<void> {
@@ -211,24 +305,28 @@ export async function bulkInsertEntries(
 
   await db.withTransactionAsync(async () => {
     const statement = await db.prepareAsync(
-      `INSERT INTO entries (id, collection_id, term, reading, definition, example, tags, created_at, updated_at, indexed_at)
-       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NULL)`
+      `INSERT INTO entries (id, collection_id, term, reading, definition, example, tags,
+                            created_at, updated_at, indexed_at, term_norm, reading_norm)
+       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, ?, ?)`
     );
     try {
       for (const row of rows) {
         const term = row.term.trim();
         const definition = row.definition.trim();
         if (!term || !definition) continue;
+        const reading = row.reading?.trim() || null;
         await statement.executeAsync([
           createId('entry'),
           collectionId,
           term,
-          row.reading?.trim() || null,
+          reading,
           definition,
           row.example?.trim() || null,
           row.tags?.trim() || null,
           now,
           now,
+          normalizeSearchText(term),
+          normalizeSearchText(reading),
         ]);
         inserted += 1;
       }
