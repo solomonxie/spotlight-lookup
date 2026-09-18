@@ -3,7 +3,7 @@
  * and the triggers below keep the index in step, which matters when a dictionary
  * import adds six figures of rows.
  */
-export const SCHEMA_VERSION = 1;
+export const SCHEMA_VERSION = 2;
 
 export const SCHEMA = `
 PRAGMA journal_mode = WAL;
@@ -31,11 +31,15 @@ CREATE TABLE IF NOT EXISTS entries (
   tags TEXT,
   created_at INTEGER NOT NULL,
   updated_at INTEGER NOT NULL,
-  indexed_at INTEGER
+  indexed_at INTEGER,
+  term_norm TEXT NOT NULL DEFAULT '',
+  reading_norm TEXT NOT NULL DEFAULT ''
 );
 
 CREATE INDEX IF NOT EXISTS entries_by_collection ON entries (collection_id);
 CREATE INDEX IF NOT EXISTS entries_by_term ON entries (term COLLATE NOCASE);
+CREATE INDEX IF NOT EXISTS entries_by_term_norm ON entries (term_norm);
+CREATE INDEX IF NOT EXISTS entries_by_reading_norm ON entries (reading_norm);
 CREATE INDEX IF NOT EXISTS entries_pending_index ON entries (indexed_at) WHERE indexed_at IS NULL;
 
 CREATE VIRTUAL TABLE IF NOT EXISTS entries_fts USING fts5(
@@ -69,6 +73,36 @@ CREATE TRIGGER entries_fts_update AFTER UPDATE OF term, reading, definition, exa
   VALUES ('delete', old.rowid, old.term, old.reading, old.definition, old.example, old.tags);
   INSERT INTO entries_fts (rowid, term, reading, definition, example, tags)
   VALUES (new.rowid, new.term, new.reading, new.definition, new.example, new.tags);
+END;
+
+-- Trigrams, so a query can miss: 'resilent' still shares most of its three-character
+-- runs with 'resilient', and '咖啡' is reachable from the middle of a longer word.
+CREATE VIRTUAL TABLE IF NOT EXISTS entries_fuzzy USING fts5(
+  term_norm,
+  reading_norm,
+  content = 'entries',
+  content_rowid = 'rowid',
+  tokenize = 'trigram'
+);
+
+DROP TRIGGER IF EXISTS entries_fuzzy_insert;
+CREATE TRIGGER entries_fuzzy_insert AFTER INSERT ON entries BEGIN
+  INSERT INTO entries_fuzzy (rowid, term_norm, reading_norm)
+  VALUES (new.rowid, new.term_norm, new.reading_norm);
+END;
+
+DROP TRIGGER IF EXISTS entries_fuzzy_delete;
+CREATE TRIGGER entries_fuzzy_delete AFTER DELETE ON entries BEGIN
+  INSERT INTO entries_fuzzy (entries_fuzzy, rowid, term_norm, reading_norm)
+  VALUES ('delete', old.rowid, old.term_norm, old.reading_norm);
+END;
+
+DROP TRIGGER IF EXISTS entries_fuzzy_update;
+CREATE TRIGGER entries_fuzzy_update AFTER UPDATE OF term_norm, reading_norm ON entries BEGIN
+  INSERT INTO entries_fuzzy (entries_fuzzy, rowid, term_norm, reading_norm)
+  VALUES ('delete', old.rowid, old.term_norm, old.reading_norm);
+  INSERT INTO entries_fuzzy (rowid, term_norm, reading_norm)
+  VALUES (new.rowid, new.term_norm, new.reading_norm);
 END;
 
 -- Deleting a row loses the identifier Spotlight still holds, so park it here first.

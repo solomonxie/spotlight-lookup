@@ -65,9 +65,37 @@ newest of the rank-one rows.
  ╰──────────────────────────────────────────────╯
 ```
 
-Results refresh 180ms after the last keystroke. Ranking: exact term, then
-prefix, then full-text across definition, example and tags — which is why one
-English query reaches both directions of the dictionary.
+Results refresh 180ms after the last keystroke. Five tiers, precise first:
+exact, prefix, whole word, substring, typo — which is why one English query
+reaches both directions of the dictionary.
+
+## Forgiving matching
+
+```
+ │ xiexie▌                                  ✕   │   ← no tone marks needed
+ ╭──────────────────────────────────────────────╮
+ │ 谢谢  xiè xie                                 │
+ │ thank you; thanks                            │
+ ╰──────────────────────────────────────────────╯
+
+ │ 啡▌                                      ✕   │   ← one character, mid-word
+ ╭──────────────────────────────────────────────╮
+ │ 咖啡  kā fēi                                  │
+ │ coffee                                       │
+ ╰──────────────────────────────────────────────╯
+
+ │ delicous▌                                ✕   │   ← misspelt
+ ╭──────────────────────────────────────────────╮
+ │ delicious  /dɪˈlɪʃəs/                        │
+ │ adj. 美味的；好吃的                            │
+ ╰──────────────────────────────────────────────╯
+                     ← no separate "did you mean"; a near
+                       miss is just the last tier of results
+```
+
+The typo tier runs only when the precise tiers returned fewer than 8 rows, so a
+normal query never pays for it and a good query is never padded with near
+misses.
 
 ## States
 
@@ -121,9 +149,11 @@ expo go    ╭──────────────────────
 - No search history and no suggestions: the system Spotlight field is the one
   people are meant to reach for, and duplicating its affordances here invites
   using the wrong one.
-- CJK headwords match exactly and by prefix. `unicode61` does not segment
-  Chinese or Japanese, so searching inside a Chinese definition is word-based —
-  `咖啡` is found by its own headword and by the English gloss, not by a
-  substring of a longer Chinese sentence.
+- CJK headwords match exactly, by prefix and by substring. `unicode61` does not
+  segment Chinese or Japanese, so searching inside a Chinese *definition* is
+  still word-based.
+- Spotlight's own matching is Apple's and cannot be made typo-tolerant. The
+  normalised forms are submitted as keywords, so tone-free pinyin works there
+  too; a misspelling does not.
 - Open: the ● / ○ dot per row is engineering state. Useful while the sync is
   new, probably noise once it is trusted. Revisit after device testing.

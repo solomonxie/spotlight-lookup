@@ -34,8 +34,9 @@ Library once your own dictionaries are in. The same files are in `assets/demo/` 
   many entries it contributes to the system index.
 - **Two kinds of collections:** imported dictionaries and hand-written flashcards. Both behave
   identically in Spotlight.
-- **In-app search too**, backed by SQLite FTS5, with exact matches first, then prefixes, then
-  full-text hits across definitions, examples and tags.
+- **In-app search is forgiving.** Five tiers, precise first: exact, prefix, whole-word full text,
+  substring, then typo tolerance. Tone marks and accents are optional — `xiexie` finds 谢谢, `cafe`
+  finds `café` — and a misspelling still lands: `delicous` → `delicious`, `beatiful` → `beautiful`.
 
 ## Expo Go is not enough
 
@@ -78,6 +79,30 @@ the cap before the first sync, or trim the file to the frequency band you actual
 Set the source and translation language on the collection after importing; both are fed to Spotlight
 as keywords, so `zh-Hans` finds your Chinese decks.
 
+## How matching works
+
+Search normalises both sides to a query-shaped key — lower case, no tone marks, no spaces — and
+walks five tiers, stopping as soon as it has enough:
+
+| Tier | Finds |
+| --- | --- |
+| exact | `coffee`, `xiexie`, `咖啡` |
+| prefix | `resil…`, `kaf…` |
+| whole word | anything in a definition, example or tag |
+| substring | `elicio` → `delicious`, `啡` → `咖啡` |
+| typo | `delicous` → `delicious`, `jiayo` → `加油` |
+
+The last tier only runs when the precise ones came up short, so a normal query never pays for it.
+Candidates come from an FTS5 trigram index — a misspelling still shares most of its
+three-character runs with the word meant — and edit distance decides, with a budget that scales
+with query length (1 edit at five characters, 3 at ten). Queries of one or two characters skip
+trigrams and scan the headword columns instead, since most Chinese words are shorter than a
+trigram.
+
+**Spotlight itself is Apple's matcher** and cannot be made typo-tolerant. What it can do is match
+the normalised forms, which are submitted as keywords — so `xiexie` finds 谢谢 from the Home Screen
+even though the stored reading is `xiè xie`.
+
 ## Keeping the index in step
 
 Indexing is incremental. New and edited entries are queued, pushed in batches on launch and after
@@ -98,8 +123,10 @@ moves the UI updates the drawing in the same commit.
 
 ## Known limits
 
-- CJK headwords match exactly and by prefix; FTS5's `unicode61` tokenizer does not segment Chinese or
-  Japanese, so full-text search inside definitions is word-based only.
+- CJK headwords match exactly, by prefix and by substring; FTS5's `unicode61` tokenizer does not
+  segment Chinese or Japanese, so searching *inside* a Chinese definition is still word-based.
+- Typo tolerance compares whole headwords. A misspelling of one word inside a multi-word term will
+  not be caught.
 - Import reads the whole file into memory. Very large dictionaries should be split before importing.
 - Android and web are out of scope — `platforms` is pinned to `ios`.
 - Nothing is exported. A dictionary can be re-imported after a reinstall; a hand-written deck

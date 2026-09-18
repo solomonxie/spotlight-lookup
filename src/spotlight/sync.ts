@@ -35,6 +35,8 @@ type PendingRow = {
   definition: string;
   example: string | null;
   tags: string | null;
+  term_norm: string;
+  reading_norm: string;
 };
 
 const chunk = <T,>(items: T[], size: number): T[][] => {
@@ -54,8 +56,20 @@ function toSpotlightItem(row: PendingRow): SpotlightItem {
     title: row.term,
     subtitle,
     body,
+    // The normalised forms ride along so system search reaches an entry from an
+    // ASCII keyboard: `xiexie` matches 谢谢 even though its reading is `xiè xie`.
     keywords: Array.from(
-      new Set([row.term, row.reading, row.collection_name, row.language, ...tags].filter(Boolean) as string[])
+      new Set(
+        [
+          row.term,
+          row.reading,
+          row.term_norm,
+          row.reading_norm,
+          row.collection_name,
+          row.language,
+          ...tags,
+        ].filter(Boolean) as string[]
+      )
     ),
   };
 }
@@ -130,6 +144,7 @@ export async function syncSpotlight(
 
     const pending = await db.getAllAsync<PendingRow>(
       `SELECT e.id, e.collection_id, e.term, e.reading, e.definition, e.example, e.tags,
+              e.term_norm, e.reading_norm,
               c.name AS collection_name, c.kind, c.language
        FROM entries e JOIN collections c ON c.id = e.collection_id
        WHERE e.collection_id = ? AND e.indexed_at IS NULL
