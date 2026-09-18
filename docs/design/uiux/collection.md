@@ -3,18 +3,18 @@
 One collection's Spotlight settings and its entries. Pushed from Library.
 
 ```
- ‹ Library     English → 中文 (starter)
+ ‹ Library      English → 中文 (demo)
 
  ╭──────────────────────────────────────────────╮
  │ Index in Spotlight                      ─●   │
- │ 15 of 15 entries are in system search.       │ ← state, stays inline
+ │ 180 of 180 entries are in system search.     │ ← state, stays inline
  ╰──────────────────────────────────────────────╯
 
  COLLECTION
  ╭──────────────────────────────────────────────╮
  │ NAME                                         │
  │ ┌──────────────────────────────────────────┐ │
- │ │ English → 中文 (starter)                  │ │
+ │ │ English → 中文 (demo)                     │ │
  │ └──────────────────────────────────────────┘ │
  │ SOURCE LANGUAGE                              │
  │ ┌──────────────────────────────────────────┐ │
@@ -31,14 +31,14 @@ One collection's Spotlight settings and its entries. Pushed from Library.
  │ [[ Save ]]                                   │
  ╰──────────────────────────────────────────────╯
 
- ENTRIES (15)
+ ENTRIES (180)
  ╭──────────────────────────────────────────────╮
- │ serendipity                                  │
- │ n. 意外发现珍奇事物的本领；机缘巧合             │
+ │ forget                                       │
+ │ v. 忘记；遗忘                                  │
  ╰──────────────────────────────────────────────╯
  ╭──────────────────────────────────────────────╮
- │ resilient                                    │
- │ adj. 有韧性的；能快速恢复的                     │
+ │ remember                                     │
+ │ v. 记得；记住                                  │
  ╰──────────────────────────────────────────────╯
 
  [ Delete collection ]!
@@ -50,17 +50,17 @@ Reached from: Library → tap a collection card
 
 ```
 off        │ Index in Spotlight               ○─ │
-           │ 0 of 8210 entries are in system     │
+           │ 0 of 122000 entries are in system   │
            │ search.                             │
 
-partial    │ 20000 of 84000 entries are in       │ ← cap reached
+partial    │ 20000 of 122000 entries are in      │ ← cap reached
            │ system search.                      │
 
 empty      ENTRIES (0)
                      Empty collection
              Nothing has been added here yet.
 
-first 100  ENTRIES (84000)                        ← list shows 100 newest,
+first 100  ENTRIES (122000)                       ← list shows 100 newest,
            …                                        no pagination yet
 ```
 
@@ -118,4 +118,4 @@ first 100  ENTRIES (84000)                        ← list shows 100 newest,
 - Lowering the cap does not remove already-indexed entries; it only stops new
   ones. Rebuild from Settings to apply it downward.
 - Open: entries list is capped at 100 with no way to page or search within a
-  collection. Fine for a deck, wrong for an 84k dictionary.
+  collection. Fine for a deck, wrong for a full CC-CEDICT import.

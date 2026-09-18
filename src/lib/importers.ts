@@ -1,3 +1,5 @@
+import { pinyinToToneMarks } from './pinyin';
+
 export type ParsedEntry = {
   term: string;
   reading?: string | null;
@@ -7,7 +9,7 @@ export type ParsedEntry = {
 };
 
 export type ImportPreview = {
-  format: 'json' | 'csv' | 'tsv';
+  format: 'json' | 'csv' | 'tsv' | 'cedict';
   entries: ParsedEntry[];
   skipped: number;
 };
@@ -113,6 +115,37 @@ function fromDelimited(text: string, delimiter: string): ParsedEntry[] {
   }));
 }
 
+/** `傳統 传统 [chuan2 tong3] /tradition/convention/` — one entry per line. */
+const CEDICT_LINE = /^(\S+)\s+(\S+)\s+\[([^\]]*)\]\s*\/(.*)\/\s*$/;
+
+function fromCedict(text: string): ParsedEntry[] {
+  const entries: ParsedEntry[] = [];
+
+  for (const line of text.split(/\r?\n/)) {
+    if (line.startsWith('#') || !line.trim()) continue;
+    const match = CEDICT_LINE.exec(line);
+    if (!match) continue;
+
+    const [, traditional, simplified, pinyin, senses] = match;
+    const definition = senses
+      .split('/')
+      .map((sense) => sense.trim())
+      .filter(Boolean)
+      .join('; ');
+    if (!definition) continue;
+
+    entries.push({
+      // Traditional rides along as a tag so it stays searchable without a second row.
+      term: simplified,
+      reading: pinyinToToneMarks(pinyin) || null,
+      definition,
+      tags: traditional === simplified ? null : traditional,
+    });
+  }
+
+  return entries;
+}
+
 function fromJson(text: string): ParsedEntry[] {
   const data = JSON.parse(text);
   const records: Record<string, unknown>[] = Array.isArray(data)
@@ -142,6 +175,13 @@ function fromJson(text: string): ParsedEntry[] {
 function detectFormat(fileName: string, text: string): ImportPreview['format'] {
   const extension = fileName.split('.').pop()?.toLowerCase();
   if (extension === 'json' || /^\s*[[{]/.test(text)) return 'json';
+
+  // CC-CEDICT and its derivatives ship as .u8 with a banner of # comments.
+  const sample = text.split(/\r?\n/, 60).filter((line) => line.trim() && !line.startsWith('#'));
+  if (sample.length > 0 && sample.filter((line) => CEDICT_LINE.test(line)).length >= sample.length / 2) {
+    return 'cedict';
+  }
+
   if (extension === 'csv') return 'csv';
   if (extension === 'tsv') return 'tsv';
   // .txt and friends: whichever separator the first line actually uses.
@@ -155,7 +195,9 @@ export function parseImportFile(fileName: string, text: string): ImportPreview {
   const parsed =
     format === 'json'
       ? fromJson(text)
-      : fromDelimited(text, format === 'csv' ? ',' : '\t');
+      : format === 'cedict'
+        ? fromCedict(text)
+        : fromDelimited(text, format === 'csv' ? ',' : '\t');
 
   const entries = parsed.filter((entry) => entry.term.trim() && entry.definition.trim());
   return { format, entries, skipped: parsed.length - entries.length };

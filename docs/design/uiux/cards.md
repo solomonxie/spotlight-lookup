@@ -24,14 +24,14 @@ Third tab.
 
  CARDS IN MY FLASHCARDS
  ╭──────────────────────────────────────────────╮
- │ idempotent                                   │
- │ Running it twice changes nothing more than   │
- │ running it once.                             │
+ │ 走后门                                        │
+ │ To pull strings; to use back-door            │
+ │ connections.                                 │
  ╰──────────────────────────────────────────────╯
  ╭──────────────────────────────────────────────╮
- │ backpressure                                 │
- │ A consumer signalling a producer to slow     │
- │ down.                                        │
+ │ 拍马屁                                        │
+ │ To flatter; to suck up. Literally 'pat the   │
+ │ horse's rump'.                               │
  ╰──────────────────────────────────────────────╯
 
  ────────────────────────────────────────────────
@@ -50,12 +50,13 @@ this tab, and a card takes three fields.
 empty      No cards yet
            Anything you add here becomes
            searchable from the Home Screen.
+           ← only after the 12 demo cards are deleted
 
 saving     [[ ⟳ ]]                              ← fields stay filled until
                                                   the write succeeds
 
 multi-deck DECK
-           ( My Flashcards ) ( JLPT N2 ) ( Kanji )
+           ( My Flashcards ) ( HSK 4 ) ( Chengyu )
                  ^^^^^^^^^^^^ selected, accent border
            ← only appears with 2+ flashcard decks
 
@@ -99,6 +100,9 @@ no deck    [[ Add card ]] ──▶ creates "My Flashcards", then saves
 - Front/back rather than term/definition: this tab is for memorisation, and
   the back is often a question's answer rather than a dictionary sense. The
   same two columns are what a dictionary import fills.
+- The form has no READING field, though the schema and the demo cards have one.
+  Seeded cards show their pinyin on Entry; a card typed here does not. Either
+  add the field or drop it from the seed — currently inconsistent.
 - Deck chips are hidden at one deck so the common case is one screen with no
   chrome.
 - Open: rows here do not push Entry, so a typo on a card can only be fixed by

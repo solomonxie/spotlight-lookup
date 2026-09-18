@@ -21,18 +21,18 @@ One search hit or recent entry. `src/ui/EntryRow.tsx`.
 
 ```
  ╭──────────────────────────────────────────────╮
- │ resilient  /rɪˈzɪliənt/                      │
- │ adj. 有韧性的；能快速恢复的                     │
- │ English → 中文 (starter)  ●  in Spotlight    │
+ │ quiet  /ˈkwaɪət/                             │
+ │ adj. 安静的；平静的                            │
+ │ English → 中文 (demo)  ●  in Spotlight       │
  ╰──────────────────────────────────────────────╯
 ```
 
 ```
-indexed     English → 中文 (starter)  ●  in Spotlight
-queued      My Flashcards             ○  queued
-excluded    Old JLPT deck             ·  not indexed
-no reading  idempotent
-            Running it twice changes nothing more…
+indexed     English → 中文 (demo)   ●  in Spotlight
+queued      My Flashcards           ○  queued
+excluded    CC-CEDICT (full)        ·  not indexed
+no reading  bikeshedding
+            Debating trivia while the hard part…
 long term   Donaudampfschiffahrtsgesell…  /doːnaʊ…/
             2-line definition, then it clips ………
 ```
@@ -45,8 +45,8 @@ reading to 1 each.
 ```
  INDEX STATUS                                     ← SectionHeader
  ╭──────────────────────────────────────────────╮
- │ Entries in app                          18   │ ← Card
- │ In Spotlight                            18   │
+ │ Entries in app                         317   │ ← Card
+ │ In Spotlight                           317   │
  │ Waiting to index                         0   │
  ╰──────────────────────────────────────────────╯
 
@@ -76,7 +76,7 @@ reading to 1 each.
 ```
 
 The reasoning lives here so the controls stay above the fold. Current state
-("18 of 20,000 entries are in system search.") stays inline — that answers
+("180 of 180 entries are in system search.") stays inline — that answers
 "is this working?", which is not an explanation.
 
 ```

@@ -1,0 +1,1262 @@
+[
+  {
+    "term": "hello",
+    "reading": "/həˈloʊ/",
+    "definition": "int. 你好；喂",
+    "example": "Hello, is anyone there?",
+    "tags": "greeting"
+  },
+  {
+    "term": "goodbye",
+    "reading": "/ˌɡʊdˈbaɪ/",
+    "definition": "int. 再见",
+    "example": "She waved goodbye from the platform.",
+    "tags": "greeting"
+  },
+  {
+    "term": "please",
+    "reading": "/pliːz/",
+    "definition": "adv. 请  v. 使高兴",
+    "example": "Please close the door.",
+    "tags": "courtesy"
+  },
+  {
+    "term": "thanks",
+    "reading": "/θæŋks/",
+    "definition": "n. 谢谢；感谢",
+    "example": "Thanks for waiting.",
+    "tags": "courtesy"
+  },
+  {
+    "term": "sorry",
+    "reading": "/ˈsɑːri/",
+    "definition": "adj. 抱歉的；难过的",
+    "example": "Sorry, I did not catch that.",
+    "tags": "courtesy"
+  },
+  {
+    "term": "welcome",
+    "reading": "/ˈwelkəm/",
+    "definition": "int. 欢迎  adj. 受欢迎的",
+    "example": "Welcome to Shanghai.",
+    "tags": "greeting"
+  },
+  {
+    "term": "excuse",
+    "reading": "/ɪkˈskjuːz/",
+    "definition": "v. 原谅；找借口  n. 借口",
+    "example": "Excuse me, is this seat taken?",
+    "tags": "courtesy"
+  },
+  {
+    "term": "friend",
+    "reading": "/frend/",
+    "definition": "n. 朋友",
+    "example": "He is an old friend of mine.",
+    "tags": "people"
+  },
+  {
+    "term": "name",
+    "reading": "/neɪm/",
+    "definition": "n. 名字  v. 命名",
+    "example": "What is your name?",
+    "tags": "people"
+  },
+  {
+    "term": "meet",
+    "reading": "/miːt/",
+    "definition": "v. 遇见；会面",
+    "example": "Nice to meet you.",
+    "tags": "verb"
+  },
+  {
+    "term": "introduce",
+    "reading": "/ˌɪntrəˈduːs/",
+    "definition": "v. 介绍；引进",
+    "example": "Let me introduce my colleague.",
+    "tags": "verb"
+  },
+  {
+    "term": "congratulations",
+    "reading": "/kənˌɡrætʃuˈleɪʃnz/",
+    "definition": "n. 祝贺；恭喜",
+    "example": "Congratulations on the new job!",
+    "tags": "courtesy"
+  },
+  {
+    "term": "time",
+    "reading": "/taɪm/",
+    "definition": "n. 时间；次数",
+    "example": "Do you have time tomorrow?",
+    "tags": "time"
+  },
+  {
+    "term": "today",
+    "reading": "/təˈdeɪ/",
+    "definition": "n./adv. 今天",
+    "example": "Today is Monday.",
+    "tags": "time"
+  },
+  {
+    "term": "tomorrow",
+    "reading": "/təˈmɑːroʊ/",
+    "definition": "n./adv. 明天",
+    "example": "See you tomorrow.",
+    "tags": "time"
+  },
+  {
+    "term": "yesterday",
+    "reading": "/ˈjestərdeɪ/",
+    "definition": "n./adv. 昨天",
+    "example": "It rained yesterday.",
+    "tags": "time"
+  },
+  {
+    "term": "morning",
+    "reading": "/ˈmɔːrnɪŋ/",
+    "definition": "n. 早晨；上午",
+    "example": "I run every morning.",
+    "tags": "time"
+  },
+  {
+    "term": "afternoon",
+    "reading": "/ˌæftərˈnuːn/",
+    "definition": "n. 下午",
+    "example": "The meeting is this afternoon.",
+    "tags": "time"
+  },
+  {
+    "term": "evening",
+    "reading": "/ˈiːvnɪŋ/",
+    "definition": "n. 傍晚；晚上",
+    "example": "We arrived in the evening.",
+    "tags": "time"
+  },
+  {
+    "term": "night",
+    "reading": "/naɪt/",
+    "definition": "n. 夜晚；夜间",
+    "example": "It gets cold at night.",
+    "tags": "time"
+  },
+  {
+    "term": "week",
+    "reading": "/wiːk/",
+    "definition": "n. 星期；一周",
+    "example": "I will be away for a week.",
+    "tags": "time"
+  },
+  {
+    "term": "month",
+    "reading": "/mʌnθ/",
+    "definition": "n. 月；月份",
+    "example": "Rent is due every month.",
+    "tags": "time"
+  },
+  {
+    "term": "year",
+    "reading": "/jɪr/",
+    "definition": "n. 年；年度",
+    "example": "She studied here for a year.",
+    "tags": "time"
+  },
+  {
+    "term": "hour",
+    "reading": "/ˈaʊər/",
+    "definition": "n. 小时；钟头",
+    "example": "The flight takes three hours.",
+    "tags": "time"
+  },
+  {
+    "term": "minute",
+    "reading": "/ˈmɪnɪt/",
+    "definition": "n. 分钟；片刻",
+    "example": "Wait a minute, please.",
+    "tags": "time"
+  },
+  {
+    "term": "early",
+    "reading": "/ˈɜːrli/",
+    "definition": "adj. 早的  adv. 提早",
+    "example": "The train left early.",
+    "tags": "time"
+  },
+  {
+    "term": "late",
+    "reading": "/leɪt/",
+    "definition": "adj. 晚的；迟到的  adv. 晚",
+    "example": "Sorry I am late.",
+    "tags": "time"
+  },
+  {
+    "term": "now",
+    "reading": "/naʊ/",
+    "definition": "adv. 现在；立刻",
+    "example": "We should leave now.",
+    "tags": "time"
+  },
+  {
+    "term": "many",
+    "reading": "/ˈmeni/",
+    "definition": "adj. 许多的  pron. 许多",
+    "example": "There were many people waiting.",
+    "tags": "quantity"
+  },
+  {
+    "term": "few",
+    "reading": "/fjuː/",
+    "definition": "adj. 很少的；不多的",
+    "example": "Few shops open this early.",
+    "tags": "quantity"
+  },
+  {
+    "term": "all",
+    "reading": "/ɔːl/",
+    "definition": "det. 全部的  pron. 全部",
+    "example": "All the seats were taken.",
+    "tags": "quantity"
+  },
+  {
+    "term": "some",
+    "reading": "/sʌm/",
+    "definition": "det. 一些；某些",
+    "example": "I bought some fruit.",
+    "tags": "quantity"
+  },
+  {
+    "term": "enough",
+    "reading": "/ɪˈnʌf/",
+    "definition": "adj. 足够的  adv. 足够地",
+    "example": "We have enough time.",
+    "tags": "quantity"
+  },
+  {
+    "term": "half",
+    "reading": "/hæf/",
+    "definition": "n. 一半  adj. 一半的",
+    "example": "Half the class was absent.",
+    "tags": "quantity"
+  },
+  {
+    "term": "number",
+    "reading": "/ˈnʌmbər/",
+    "definition": "n. 数字；号码；数量",
+    "example": "What is your room number?",
+    "tags": "quantity"
+  },
+  {
+    "term": "more",
+    "reading": "/mɔːr/",
+    "definition": "adj. 更多的  adv. 更加",
+    "example": "Could I have more rice?",
+    "tags": "quantity"
+  },
+  {
+    "term": "less",
+    "reading": "/les/",
+    "definition": "adj. 更少的  adv. 较少地",
+    "example": "It costs less than I expected.",
+    "tags": "quantity"
+  },
+  {
+    "term": "first",
+    "reading": "/fɜːrst/",
+    "definition": "num. 第一  adj. 最初的",
+    "example": "This is my first visit.",
+    "tags": "quantity"
+  },
+  {
+    "term": "last",
+    "reading": "/læst/",
+    "definition": "adj. 最后的；上一个的  v. 持续",
+    "example": "The last bus leaves at eleven.",
+    "tags": "quantity"
+  },
+  {
+    "term": "total",
+    "reading": "/ˈtoʊtl/",
+    "definition": "n. 总数  adj. 总的；完全的",
+    "example": "The total came to 200 yuan.",
+    "tags": "quantity"
+  },
+  {
+    "term": "family",
+    "reading": "/ˈfæməli/",
+    "definition": "n. 家庭；家人",
+    "example": "My family lives in Beijing.",
+    "tags": "people"
+  },
+  {
+    "term": "mother",
+    "reading": "/ˈmʌðər/",
+    "definition": "n. 母亲；妈妈",
+    "example": "Her mother is a doctor.",
+    "tags": "people"
+  },
+  {
+    "term": "father",
+    "reading": "/ˈfɑːðər/",
+    "definition": "n. 父亲；爸爸",
+    "example": "My father taught me to cook.",
+    "tags": "people"
+  },
+  {
+    "term": "brother",
+    "reading": "/ˈbrʌðər/",
+    "definition": "n. 兄弟；哥哥；弟弟",
+    "example": "I have one older brother.",
+    "tags": "people"
+  },
+  {
+    "term": "sister",
+    "reading": "/ˈsɪstər/",
+    "definition": "n. 姐妹；姐姐；妹妹",
+    "example": "My sister studies medicine.",
+    "tags": "people"
+  },
+  {
+    "term": "child",
+    "reading": "/tʃaɪld/",
+    "definition": "n. 孩子；儿童",
+    "example": "The child fell asleep.",
+    "tags": "people"
+  },
+  {
+    "term": "son",
+    "reading": "/sʌn/",
+    "definition": "n. 儿子",
+    "example": "Their son is at university.",
+    "tags": "people"
+  },
+  {
+    "term": "daughter",
+    "reading": "/ˈdɔːtər/",
+    "definition": "n. 女儿",
+    "example": "His daughter plays the piano.",
+    "tags": "people"
+  },
+  {
+    "term": "husband",
+    "reading": "/ˈhʌzbənd/",
+    "definition": "n. 丈夫",
+    "example": "Her husband works nights.",
+    "tags": "people"
+  },
+  {
+    "term": "wife",
+    "reading": "/waɪf/",
+    "definition": "n. 妻子",
+    "example": "My wife is from Chengdu.",
+    "tags": "people"
+  },
+  {
+    "term": "people",
+    "reading": "/ˈpiːpl/",
+    "definition": "n. 人们；民族",
+    "example": "A lot of people came.",
+    "tags": "people"
+  },
+  {
+    "term": "neighbor",
+    "reading": "/ˈneɪbər/",
+    "definition": "n. 邻居",
+    "example": "Our neighbor keeps two cats.",
+    "tags": "people"
+  },
+  {
+    "term": "teacher",
+    "reading": "/ˈtiːtʃər/",
+    "definition": "n. 老师；教师",
+    "example": "She is a maths teacher.",
+    "tags": "people"
+  },
+  {
+    "term": "student",
+    "reading": "/ˈstuːdnt/",
+    "definition": "n. 学生",
+    "example": "He is a student at Fudan.",
+    "tags": "people"
+  },
+  {
+    "term": "food",
+    "reading": "/fuːd/",
+    "definition": "n. 食物；食品",
+    "example": "The food here is excellent.",
+    "tags": "food"
+  },
+  {
+    "term": "water",
+    "reading": "/ˈwɔːtər/",
+    "definition": "n. 水  v. 浇水",
+    "example": "A glass of water, please.",
+    "tags": "food"
+  },
+  {
+    "term": "tea",
+    "reading": "/tiː/",
+    "definition": "n. 茶；茶叶",
+    "example": "Would you like some tea?",
+    "tags": "food"
+  },
+  {
+    "term": "coffee",
+    "reading": "/ˈkɔːfi/",
+    "definition": "n. 咖啡",
+    "example": "I drink coffee in the morning.",
+    "tags": "food"
+  },
+  {
+    "term": "rice",
+    "reading": "/raɪs/",
+    "definition": "n. 米；米饭",
+    "example": "Rice is served with every dish.",
+    "tags": "food"
+  },
+  {
+    "term": "noodle",
+    "reading": "/ˈnuːdl/",
+    "definition": "n. 面条",
+    "example": "Beef noodle soup is his favourite.",
+    "tags": "food"
+  },
+  {
+    "term": "bread",
+    "reading": "/bred/",
+    "definition": "n. 面包",
+    "example": "She bought fresh bread.",
+    "tags": "food"
+  },
+  {
+    "term": "meat",
+    "reading": "/miːt/",
+    "definition": "n. 肉；肉类",
+    "example": "I do not eat much meat.",
+    "tags": "food"
+  },
+  {
+    "term": "fish",
+    "reading": "/fɪʃ/",
+    "definition": "n. 鱼；鱼肉  v. 钓鱼",
+    "example": "The fish was steamed whole.",
+    "tags": "food"
+  },
+  {
+    "term": "vegetable",
+    "reading": "/ˈvedʒtəbl/",
+    "definition": "n. 蔬菜",
+    "example": "Order a vegetable dish too.",
+    "tags": "food"
+  },
+  {
+    "term": "fruit",
+    "reading": "/fruːt/",
+    "definition": "n. 水果；果实",
+    "example": "Fruit is cheap in summer.",
+    "tags": "food"
+  },
+  {
+    "term": "apple",
+    "reading": "/ˈæpl/",
+    "definition": "n. 苹果",
+    "example": "She packed an apple for lunch.",
+    "tags": "food"
+  },
+  {
+    "term": "egg",
+    "reading": "/eɡ/",
+    "definition": "n. 蛋；鸡蛋",
+    "example": "Tomato and egg is a classic.",
+    "tags": "food"
+  },
+  {
+    "term": "soup",
+    "reading": "/suːp/",
+    "definition": "n. 汤",
+    "example": "The soup is a little salty.",
+    "tags": "food"
+  },
+  {
+    "term": "salt",
+    "reading": "/sɔːlt/",
+    "definition": "n. 盐  v. 加盐",
+    "example": "Add a little salt.",
+    "tags": "food"
+  },
+  {
+    "term": "sugar",
+    "reading": "/ˈʃʊɡər/",
+    "definition": "n. 糖；食糖",
+    "example": "No sugar in my coffee, thanks.",
+    "tags": "food"
+  },
+  {
+    "term": "spicy",
+    "reading": "/ˈspaɪsi/",
+    "definition": "adj. 辣的；辛辣的",
+    "example": "Sichuan food is very spicy.",
+    "tags": "food"
+  },
+  {
+    "term": "delicious",
+    "reading": "/dɪˈlɪʃəs/",
+    "definition": "adj. 美味的；好吃的",
+    "example": "That was delicious.",
+    "tags": "food"
+  },
+  {
+    "term": "hungry",
+    "reading": "/ˈhʌŋɡri/",
+    "definition": "adj. 饥饿的；饿的",
+    "example": "I am getting hungry.",
+    "tags": "food"
+  },
+  {
+    "term": "thirsty",
+    "reading": "/ˈθɜːrsti/",
+    "definition": "adj. 口渴的",
+    "example": "The hike left us thirsty.",
+    "tags": "food"
+  },
+  {
+    "term": "travel",
+    "reading": "/ˈtrævl/",
+    "definition": "v. 旅行  n. 旅行",
+    "example": "They travel every summer.",
+    "tags": "travel"
+  },
+  {
+    "term": "airport",
+    "reading": "/ˈerpɔːrt/",
+    "definition": "n. 机场",
+    "example": "The airport is an hour away.",
+    "tags": "travel"
+  },
+  {
+    "term": "train",
+    "reading": "/treɪn/",
+    "definition": "n. 火车  v. 训练",
+    "example": "The train was on time.",
+    "tags": "travel"
+  },
+  {
+    "term": "station",
+    "reading": "/ˈsteɪʃn/",
+    "definition": "n. 车站；站",
+    "example": "Get off at the next station.",
+    "tags": "travel"
+  },
+  {
+    "term": "ticket",
+    "reading": "/ˈtɪkɪt/",
+    "definition": "n. 票；罚单",
+    "example": "I booked two tickets.",
+    "tags": "travel"
+  },
+  {
+    "term": "hotel",
+    "reading": "/hoʊˈtel/",
+    "definition": "n. 酒店；旅馆",
+    "example": "The hotel is near the station.",
+    "tags": "travel"
+  },
+  {
+    "term": "street",
+    "reading": "/striːt/",
+    "definition": "n. 街道；马路",
+    "example": "The street was full of stalls.",
+    "tags": "travel"
+  },
+  {
+    "term": "city",
+    "reading": "/ˈsɪti/",
+    "definition": "n. 城市",
+    "example": "Shanghai is a huge city.",
+    "tags": "travel"
+  },
+  {
+    "term": "country",
+    "reading": "/ˈkʌntri/",
+    "definition": "n. 国家；乡村",
+    "example": "She has visited ten countries.",
+    "tags": "travel"
+  },
+  {
+    "term": "map",
+    "reading": "/mæp/",
+    "definition": "n. 地图  v. 绘制地图",
+    "example": "Check the map on your phone.",
+    "tags": "travel"
+  },
+  {
+    "term": "luggage",
+    "reading": "/ˈlʌɡɪdʒ/",
+    "definition": "n. 行李",
+    "example": "My luggage did not arrive.",
+    "tags": "travel"
+  },
+  {
+    "term": "passport",
+    "reading": "/ˈpæspɔːrt/",
+    "definition": "n. 护照",
+    "example": "Keep your passport somewhere safe.",
+    "tags": "travel"
+  },
+  {
+    "term": "left",
+    "reading": "/left/",
+    "definition": "adj./adv. 左；向左  n. 左边",
+    "example": "Turn left at the corner.",
+    "tags": "direction"
+  },
+  {
+    "term": "right",
+    "reading": "/raɪt/",
+    "definition": "adj. 右的；正确的  n. 权利",
+    "example": "You were right about the time.",
+    "tags": "direction"
+  },
+  {
+    "term": "near",
+    "reading": "/nɪr/",
+    "definition": "adj. 近的  prep. 靠近",
+    "example": "Is there a bank near here?",
+    "tags": "direction"
+  },
+  {
+    "term": "far",
+    "reading": "/fɑːr/",
+    "definition": "adj. 远的  adv. 远地",
+    "example": "The museum is not far.",
+    "tags": "direction"
+  },
+  {
+    "term": "road",
+    "reading": "/roʊd/",
+    "definition": "n. 路；道路",
+    "example": "The road was closed for repairs.",
+    "tags": "travel"
+  },
+  {
+    "term": "bridge",
+    "reading": "/brɪdʒ/",
+    "definition": "n. 桥；桥梁",
+    "example": "Walk across the bridge.",
+    "tags": "travel"
+  },
+  {
+    "term": "work",
+    "reading": "/wɜːrk/",
+    "definition": "n. 工作  v. 工作；运转",
+    "example": "The lift does not work.",
+    "tags": "work"
+  },
+  {
+    "term": "job",
+    "reading": "/dʒɑːb/",
+    "definition": "n. 工作；职位",
+    "example": "She started a new job.",
+    "tags": "work"
+  },
+  {
+    "term": "office",
+    "reading": "/ˈɔːfɪs/",
+    "definition": "n. 办公室；事务所",
+    "example": "The office closes at six.",
+    "tags": "work"
+  },
+  {
+    "term": "meeting",
+    "reading": "/ˈmiːtɪŋ/",
+    "definition": "n. 会议；会面",
+    "example": "The meeting ran long.",
+    "tags": "work"
+  },
+  {
+    "term": "company",
+    "reading": "/ˈkʌmpəni/",
+    "definition": "n. 公司；陪伴",
+    "example": "He works for a small company.",
+    "tags": "work"
+  },
+  {
+    "term": "money",
+    "reading": "/ˈmʌni/",
+    "definition": "n. 钱；货币",
+    "example": "I did not bring enough money.",
+    "tags": "money"
+  },
+  {
+    "term": "price",
+    "reading": "/praɪs/",
+    "definition": "n. 价格  v. 定价",
+    "example": "The price includes delivery.",
+    "tags": "money"
+  },
+  {
+    "term": "buy",
+    "reading": "/baɪ/",
+    "definition": "v. 买；购买",
+    "example": "Where did you buy that?",
+    "tags": "money"
+  },
+  {
+    "term": "sell",
+    "reading": "/sel/",
+    "definition": "v. 卖；销售",
+    "example": "They sell tea by weight.",
+    "tags": "money"
+  },
+  {
+    "term": "school",
+    "reading": "/skuːl/",
+    "definition": "n. 学校",
+    "example": "The school is on this street.",
+    "tags": "study"
+  },
+  {
+    "term": "study",
+    "reading": "/ˈstʌdi/",
+    "definition": "v. 学习；研究  n. 学习",
+    "example": "She studies Chinese history.",
+    "tags": "study"
+  },
+  {
+    "term": "book",
+    "reading": "/bʊk/",
+    "definition": "n. 书  v. 预订",
+    "example": "I booked a room online.",
+    "tags": "study"
+  },
+  {
+    "term": "question",
+    "reading": "/ˈkwestʃən/",
+    "definition": "n. 问题  v. 质疑",
+    "example": "May I ask a question?",
+    "tags": "study"
+  },
+  {
+    "term": "answer",
+    "reading": "/ˈænsər/",
+    "definition": "n. 答案  v. 回答",
+    "example": "Nobody answered the phone.",
+    "tags": "study"
+  },
+  {
+    "term": "exam",
+    "reading": "/ɪɡˈzæm/",
+    "definition": "n. 考试",
+    "example": "The exam lasts two hours.",
+    "tags": "study"
+  },
+  {
+    "term": "word",
+    "reading": "/wɜːrd/",
+    "definition": "n. 词；单词；话",
+    "example": "I looked up the word.",
+    "tags": "study"
+  },
+  {
+    "term": "computer",
+    "reading": "/kəmˈpjuːtər/",
+    "definition": "n. 电脑；计算机",
+    "example": "My computer is running slowly.",
+    "tags": "tech"
+  },
+  {
+    "term": "phone",
+    "reading": "/foʊn/",
+    "definition": "n. 电话；手机  v. 打电话",
+    "example": "My phone is out of battery.",
+    "tags": "tech"
+  },
+  {
+    "term": "internet",
+    "reading": "/ˈɪntərnet/",
+    "definition": "n. 互联网；因特网",
+    "example": "The internet is down again.",
+    "tags": "tech"
+  },
+  {
+    "term": "software",
+    "reading": "/ˈsɔːftwer/",
+    "definition": "n. 软件",
+    "example": "The software needs an update.",
+    "tags": "tech"
+  },
+  {
+    "term": "file",
+    "reading": "/faɪl/",
+    "definition": "n. 文件；档案  v. 归档",
+    "example": "Send me the file.",
+    "tags": "tech"
+  },
+  {
+    "term": "password",
+    "reading": "/ˈpæswɜːrd/",
+    "definition": "n. 密码",
+    "example": "I forgot my password.",
+    "tags": "tech"
+  },
+  {
+    "term": "search",
+    "reading": "/sɜːrtʃ/",
+    "definition": "v. 搜索；寻找  n. 搜索",
+    "example": "Search for it by name.",
+    "tags": "tech"
+  },
+  {
+    "term": "download",
+    "reading": "/ˈdaʊnloʊd/",
+    "definition": "v. 下载  n. 下载",
+    "example": "The download finished.",
+    "tags": "tech"
+  },
+  {
+    "term": "screen",
+    "reading": "/skriːn/",
+    "definition": "n. 屏幕；荧幕  v. 筛查",
+    "example": "The screen is cracked.",
+    "tags": "tech"
+  },
+  {
+    "term": "data",
+    "reading": "/ˈdeɪtə/",
+    "definition": "n. 数据；资料",
+    "example": "Back up your data.",
+    "tags": "tech"
+  },
+  {
+    "term": "network",
+    "reading": "/ˈnetwɜːrk/",
+    "definition": "n. 网络；人脉  v. 建立人脉",
+    "example": "The network is unstable.",
+    "tags": "tech"
+  },
+  {
+    "term": "update",
+    "reading": "/ˈʌpdeɪt/",
+    "definition": "n. 更新  v. 更新；升级",
+    "example": "Install the latest update.",
+    "tags": "tech"
+  },
+  {
+    "term": "message",
+    "reading": "/ˈmesɪdʒ/",
+    "definition": "n. 消息；信息  v. 发消息",
+    "example": "I left you a message.",
+    "tags": "tech"
+  },
+  {
+    "term": "account",
+    "reading": "/əˈkaʊnt/",
+    "definition": "n. 账户；账号；描述",
+    "example": "Sign in to your account.",
+    "tags": "tech"
+  },
+  {
+    "term": "head",
+    "reading": "/hed/",
+    "definition": "n. 头；头脑  v. 前往",
+    "example": "My head hurts.",
+    "tags": "health"
+  },
+  {
+    "term": "hand",
+    "reading": "/hænd/",
+    "definition": "n. 手  v. 递给",
+    "example": "Wash your hands first.",
+    "tags": "health"
+  },
+  {
+    "term": "eye",
+    "reading": "/aɪ/",
+    "definition": "n. 眼睛；眼光",
+    "example": "Something is in my eye.",
+    "tags": "health"
+  },
+  {
+    "term": "heart",
+    "reading": "/hɑːrt/",
+    "definition": "n. 心脏；内心",
+    "example": "His heart was racing.",
+    "tags": "health"
+  },
+  {
+    "term": "doctor",
+    "reading": "/ˈdɑːktər/",
+    "definition": "n. 医生；博士",
+    "example": "You should see a doctor.",
+    "tags": "health"
+  },
+  {
+    "term": "hospital",
+    "reading": "/ˈhɑːspɪtl/",
+    "definition": "n. 医院",
+    "example": "She works at the hospital.",
+    "tags": "health"
+  },
+  {
+    "term": "medicine",
+    "reading": "/ˈmedəsn/",
+    "definition": "n. 药；医学",
+    "example": "Take this medicine twice a day.",
+    "tags": "health"
+  },
+  {
+    "term": "pain",
+    "reading": "/peɪn/",
+    "definition": "n. 疼痛；痛苦",
+    "example": "The pain comes and goes.",
+    "tags": "health"
+  },
+  {
+    "term": "tired",
+    "reading": "/ˈtaɪərd/",
+    "definition": "adj. 疲倦的；累的",
+    "example": "I am too tired to cook.",
+    "tags": "health"
+  },
+  {
+    "term": "sick",
+    "reading": "/sɪk/",
+    "definition": "adj. 生病的；恶心的",
+    "example": "He called in sick.",
+    "tags": "health"
+  },
+  {
+    "term": "healthy",
+    "reading": "/ˈhelθi/",
+    "definition": "adj. 健康的；有益健康的",
+    "example": "Walking is a healthy habit.",
+    "tags": "health"
+  },
+  {
+    "term": "sleep",
+    "reading": "/sliːp/",
+    "definition": "v. 睡觉  n. 睡眠",
+    "example": "I did not sleep well.",
+    "tags": "health"
+  },
+  {
+    "term": "rest",
+    "reading": "/rest/",
+    "definition": "v. 休息  n. 休息；其余",
+    "example": "Get some rest.",
+    "tags": "health"
+  },
+  {
+    "term": "exercise",
+    "reading": "/ˈeksərsaɪz/",
+    "definition": "n. 锻炼；练习  v. 锻炼",
+    "example": "She exercises before work.",
+    "tags": "health"
+  },
+  {
+    "term": "happy",
+    "reading": "/ˈhæpi/",
+    "definition": "adj. 快乐的；高兴的",
+    "example": "I am happy for you.",
+    "tags": "feeling"
+  },
+  {
+    "term": "sad",
+    "reading": "/sæd/",
+    "definition": "adj. 伤心的；难过的",
+    "example": "The ending was sad.",
+    "tags": "feeling"
+  },
+  {
+    "term": "angry",
+    "reading": "/ˈæŋɡri/",
+    "definition": "adj. 生气的；愤怒的",
+    "example": "Do not be angry with him.",
+    "tags": "feeling"
+  },
+  {
+    "term": "afraid",
+    "reading": "/əˈfreɪd/",
+    "definition": "adj. 害怕的；恐惧的",
+    "example": "She is afraid of dogs.",
+    "tags": "feeling"
+  },
+  {
+    "term": "surprised",
+    "reading": "/sərˈpraɪzd/",
+    "definition": "adj. 惊讶的；感到意外的",
+    "example": "I was surprised to see you.",
+    "tags": "feeling"
+  },
+  {
+    "term": "bored",
+    "reading": "/bɔːrd/",
+    "definition": "adj. 无聊的；厌烦的",
+    "example": "The kids got bored.",
+    "tags": "feeling"
+  },
+  {
+    "term": "excited",
+    "reading": "/ɪkˈsaɪtɪd/",
+    "definition": "adj. 兴奋的；激动的",
+    "example": "We are excited about the trip.",
+    "tags": "feeling"
+  },
+  {
+    "term": "lonely",
+    "reading": "/ˈloʊnli/",
+    "definition": "adj. 孤独的；寂寞的",
+    "example": "The first month felt lonely.",
+    "tags": "feeling"
+  },
+  {
+    "term": "proud",
+    "reading": "/praʊd/",
+    "definition": "adj. 自豪的；骄傲的",
+    "example": "Her parents are proud of her.",
+    "tags": "feeling"
+  },
+  {
+    "term": "nervous",
+    "reading": "/ˈnɜːrvəs/",
+    "definition": "adj. 紧张的；不安的",
+    "example": "I get nervous before exams.",
+    "tags": "feeling"
+  },
+  {
+    "term": "beautiful",
+    "reading": "/ˈbjuːtɪfl/",
+    "definition": "adj. 美丽的；漂亮的",
+    "example": "What a beautiful view.",
+    "tags": "description"
+  },
+  {
+    "term": "difficult",
+    "reading": "/ˈdɪfɪkəlt/",
+    "definition": "adj. 困难的；难的",
+    "example": "Chinese tones are difficult.",
+    "tags": "description"
+  },
+  {
+    "term": "easy",
+    "reading": "/ˈiːzi/",
+    "definition": "adj. 容易的；轻松的",
+    "example": "The test was easy.",
+    "tags": "description"
+  },
+  {
+    "term": "important",
+    "reading": "/ɪmˈpɔːrtnt/",
+    "definition": "adj. 重要的",
+    "example": "This is an important detail.",
+    "tags": "description"
+  },
+  {
+    "term": "expensive",
+    "reading": "/ɪkˈspensɪv/",
+    "definition": "adj. 昂贵的；贵的",
+    "example": "That restaurant is expensive.",
+    "tags": "description"
+  },
+  {
+    "term": "cheap",
+    "reading": "/tʃiːp/",
+    "definition": "adj. 便宜的；廉价的",
+    "example": "The tickets were cheap.",
+    "tags": "description"
+  },
+  {
+    "term": "busy",
+    "reading": "/ˈbɪzi/",
+    "definition": "adj. 忙的；繁忙的",
+    "example": "I am busy until Friday.",
+    "tags": "description"
+  },
+  {
+    "term": "free",
+    "reading": "/friː/",
+    "definition": "adj. 自由的；免费的；空闲的",
+    "example": "Are you free tonight?",
+    "tags": "description"
+  },
+  {
+    "term": "quiet",
+    "reading": "/ˈkwaɪət/",
+    "definition": "adj. 安静的；平静的",
+    "example": "Find a quiet corner.",
+    "tags": "description"
+  },
+  {
+    "term": "strange",
+    "reading": "/streɪndʒ/",
+    "definition": "adj. 奇怪的；陌生的",
+    "example": "That is a strange coincidence.",
+    "tags": "description"
+  },
+  {
+    "term": "go",
+    "reading": "/ɡoʊ/",
+    "definition": "v. 去；走；进行",
+    "example": "Let us go now.",
+    "tags": "verb"
+  },
+  {
+    "term": "come",
+    "reading": "/kʌm/",
+    "definition": "v. 来；到来",
+    "example": "Come in, please.",
+    "tags": "verb"
+  },
+  {
+    "term": "eat",
+    "reading": "/iːt/",
+    "definition": "v. 吃",
+    "example": "Have you eaten yet?",
+    "tags": "verb"
+  },
+  {
+    "term": "drink",
+    "reading": "/drɪŋk/",
+    "definition": "v. 喝  n. 饮料",
+    "example": "Drink plenty of water.",
+    "tags": "verb"
+  },
+  {
+    "term": "see",
+    "reading": "/siː/",
+    "definition": "v. 看见；明白",
+    "example": "I see what you mean.",
+    "tags": "verb"
+  },
+  {
+    "term": "hear",
+    "reading": "/hɪr/",
+    "definition": "v. 听见；听说",
+    "example": "I could not hear you.",
+    "tags": "verb"
+  },
+  {
+    "term": "speak",
+    "reading": "/spiːk/",
+    "definition": "v. 说话；讲",
+    "example": "Do you speak Chinese?",
+    "tags": "verb"
+  },
+  {
+    "term": "write",
+    "reading": "/raɪt/",
+    "definition": "v. 写；书写",
+    "example": "Write your name here.",
+    "tags": "verb"
+  },
+  {
+    "term": "read",
+    "reading": "/riːd/",
+    "definition": "v. 读；阅读",
+    "example": "She reads before bed.",
+    "tags": "verb"
+  },
+  {
+    "term": "know",
+    "reading": "/noʊ/",
+    "definition": "v. 知道；认识",
+    "example": "I do not know her.",
+    "tags": "verb"
+  },
+  {
+    "term": "think",
+    "reading": "/θɪŋk/",
+    "definition": "v. 想；认为",
+    "example": "I think it will rain.",
+    "tags": "verb"
+  },
+  {
+    "term": "want",
+    "reading": "/wɑːnt/",
+    "definition": "v. 想要；需要",
+    "example": "What do you want to eat?",
+    "tags": "verb"
+  },
+  {
+    "term": "need",
+    "reading": "/niːd/",
+    "definition": "v. 需要  n. 需要",
+    "example": "You need a visa.",
+    "tags": "verb"
+  },
+  {
+    "term": "give",
+    "reading": "/ɡɪv/",
+    "definition": "v. 给；给予",
+    "example": "Give me a minute.",
+    "tags": "verb"
+  },
+  {
+    "term": "take",
+    "reading": "/teɪk/",
+    "definition": "v. 拿；乘坐；花费",
+    "example": "Take the number 2 line.",
+    "tags": "verb"
+  },
+  {
+    "term": "find",
+    "reading": "/faɪnd/",
+    "definition": "v. 找到；发现",
+    "example": "I cannot find my keys.",
+    "tags": "verb"
+  },
+  {
+    "term": "lose",
+    "reading": "/luːz/",
+    "definition": "v. 丢失；失去；输",
+    "example": "Do not lose the receipt.",
+    "tags": "verb"
+  },
+  {
+    "term": "help",
+    "reading": "/help/",
+    "definition": "v. 帮助  n. 帮助",
+    "example": "Can you help me with this?",
+    "tags": "verb"
+  },
+  {
+    "term": "wait",
+    "reading": "/weɪt/",
+    "definition": "v. 等待  n. 等待",
+    "example": "Wait for me outside.",
+    "tags": "verb"
+  },
+  {
+    "term": "start",
+    "reading": "/stɑːrt/",
+    "definition": "v. 开始；启动  n. 开始",
+    "example": "The film starts at eight.",
+    "tags": "verb"
+  },
+  {
+    "term": "finish",
+    "reading": "/ˈfɪnɪʃ/",
+    "definition": "v. 完成；结束",
+    "example": "I finished the report.",
+    "tags": "verb"
+  },
+  {
+    "term": "change",
+    "reading": "/tʃeɪndʒ/",
+    "definition": "v. 改变；更换  n. 变化；零钱",
+    "example": "Keep the change.",
+    "tags": "verb"
+  },
+  {
+    "term": "remember",
+    "reading": "/rɪˈmembər/",
+    "definition": "v. 记得；记住",
+    "example": "Remember to lock the door.",
+    "tags": "verb"
+  },
+  {
+    "term": "forget",
+    "reading": "/fərˈɡet/",
+    "definition": "v. 忘记；遗忘",
+    "example": "I forgot his name.",
+    "tags": "verb"
+  }
+]
