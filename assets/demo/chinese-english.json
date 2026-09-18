@@ -1,0 +1,877 @@
+[
+  {
+    "term": "你好",
+    "reading": "nǐ hǎo",
+    "definition": "hello; hi",
+    "example": "你好，请问洗手间在哪里？",
+    "tags": "greeting"
+  },
+  {
+    "term": "谢谢",
+    "reading": "xiè xie",
+    "definition": "thank you; thanks",
+    "example": "谢谢你的帮助。",
+    "tags": "courtesy"
+  },
+  {
+    "term": "再见",
+    "reading": "zài jiàn",
+    "definition": "goodbye; see you again",
+    "example": "明天见，再见！",
+    "tags": "greeting"
+  },
+  {
+    "term": "对不起",
+    "reading": "duì bu qǐ",
+    "definition": "sorry; excuse me; I apologise",
+    "example": "对不起，我来晚了。",
+    "tags": "courtesy"
+  },
+  {
+    "term": "没关系",
+    "reading": "méi guān xi",
+    "definition": "it does not matter; never mind",
+    "example": "没关系，还有时间。",
+    "tags": "courtesy"
+  },
+  {
+    "term": "请",
+    "reading": "qǐng",
+    "definition": "please; to invite; to request",
+    "example": "请坐。",
+    "tags": "courtesy"
+  },
+  {
+    "term": "不客气",
+    "reading": "bú kè qi",
+    "definition": "you are welcome; do not mention it",
+    "example": "不客气，应该的。",
+    "tags": "courtesy"
+  },
+  {
+    "term": "欢迎",
+    "reading": "huān yíng",
+    "definition": "to welcome; welcome",
+    "example": "欢迎来到北京。",
+    "tags": "greeting"
+  },
+  {
+    "term": "我",
+    "reading": "wǒ",
+    "definition": "I; me",
+    "example": "我是学生。",
+    "tags": "pronoun"
+  },
+  {
+    "term": "你",
+    "reading": "nǐ",
+    "definition": "you (singular)",
+    "example": "你叫什么名字？",
+    "tags": "pronoun"
+  },
+  {
+    "term": "他",
+    "reading": "tā",
+    "definition": "he; him",
+    "example": "他在开会。",
+    "tags": "pronoun"
+  },
+  {
+    "term": "她",
+    "reading": "tā",
+    "definition": "she; her",
+    "example": "她是我姐姐。",
+    "tags": "pronoun"
+  },
+  {
+    "term": "我们",
+    "reading": "wǒ men",
+    "definition": "we; us",
+    "example": "我们一起去吧。",
+    "tags": "pronoun"
+  },
+  {
+    "term": "这",
+    "reading": "zhè",
+    "definition": "this",
+    "example": "这是什么？",
+    "tags": "pronoun"
+  },
+  {
+    "term": "那",
+    "reading": "nà",
+    "definition": "that",
+    "example": "那本书很好看。",
+    "tags": "pronoun"
+  },
+  {
+    "term": "什么",
+    "reading": "shén me",
+    "definition": "what",
+    "example": "你想吃什么？",
+    "tags": "question"
+  },
+  {
+    "term": "谁",
+    "reading": "shéi",
+    "definition": "who; whom",
+    "example": "谁在敲门？",
+    "tags": "question"
+  },
+  {
+    "term": "哪里",
+    "reading": "nǎ lǐ",
+    "definition": "where",
+    "example": "你住在哪里？",
+    "tags": "question"
+  },
+  {
+    "term": "为什么",
+    "reading": "wèi shén me",
+    "definition": "why",
+    "example": "你为什么不来？",
+    "tags": "question"
+  },
+  {
+    "term": "怎么",
+    "reading": "zěn me",
+    "definition": "how; why",
+    "example": "这个字怎么念？",
+    "tags": "question"
+  },
+  {
+    "term": "今天",
+    "reading": "jīn tiān",
+    "definition": "today",
+    "example": "今天天气很好。",
+    "tags": "time"
+  },
+  {
+    "term": "明天",
+    "reading": "míng tiān",
+    "definition": "tomorrow",
+    "example": "明天我有考试。",
+    "tags": "time"
+  },
+  {
+    "term": "昨天",
+    "reading": "zuó tiān",
+    "definition": "yesterday",
+    "example": "昨天下了一场大雨。",
+    "tags": "time"
+  },
+  {
+    "term": "现在",
+    "reading": "xiàn zài",
+    "definition": "now; at present",
+    "example": "现在几点了？",
+    "tags": "time"
+  },
+  {
+    "term": "时间",
+    "reading": "shí jiān",
+    "definition": "time; period",
+    "example": "我没有时间。",
+    "tags": "time"
+  },
+  {
+    "term": "早上",
+    "reading": "zǎo shang",
+    "definition": "early morning",
+    "example": "早上七点出发。",
+    "tags": "time"
+  },
+  {
+    "term": "晚上",
+    "reading": "wǎn shang",
+    "definition": "evening; night",
+    "example": "晚上一起吃饭吧。",
+    "tags": "time"
+  },
+  {
+    "term": "星期",
+    "reading": "xīng qī",
+    "definition": "week",
+    "example": "这个星期我很忙。",
+    "tags": "time"
+  },
+  {
+    "term": "月",
+    "reading": "yuè",
+    "definition": "month; moon",
+    "example": "下个月我要搬家。",
+    "tags": "time"
+  },
+  {
+    "term": "年",
+    "reading": "nián",
+    "definition": "year",
+    "example": "我学中文两年了。",
+    "tags": "time"
+  },
+  {
+    "term": "小时",
+    "reading": "xiǎo shí",
+    "definition": "hour",
+    "example": "坐车要三个小时。",
+    "tags": "time"
+  },
+  {
+    "term": "分钟",
+    "reading": "fēn zhōng",
+    "definition": "minute",
+    "example": "请等五分钟。",
+    "tags": "time"
+  },
+  {
+    "term": "家",
+    "reading": "jiā",
+    "definition": "home; family; a specialist in a field",
+    "example": "我下班就回家。",
+    "tags": "people"
+  },
+  {
+    "term": "妈妈",
+    "reading": "mā ma",
+    "definition": "mum; mother",
+    "example": "妈妈在做饭。",
+    "tags": "people"
+  },
+  {
+    "term": "爸爸",
+    "reading": "bà ba",
+    "definition": "dad; father",
+    "example": "爸爸在看报纸。",
+    "tags": "people"
+  },
+  {
+    "term": "哥哥",
+    "reading": "gē ge",
+    "definition": "older brother",
+    "example": "我哥哥在上海工作。",
+    "tags": "people"
+  },
+  {
+    "term": "姐姐",
+    "reading": "jiě jie",
+    "definition": "older sister",
+    "example": "姐姐比我大三岁。",
+    "tags": "people"
+  },
+  {
+    "term": "弟弟",
+    "reading": "dì di",
+    "definition": "younger brother",
+    "example": "弟弟还在上中学。",
+    "tags": "people"
+  },
+  {
+    "term": "妹妹",
+    "reading": "mèi mei",
+    "definition": "younger sister",
+    "example": "妹妹很喜欢画画。",
+    "tags": "people"
+  },
+  {
+    "term": "孩子",
+    "reading": "hái zi",
+    "definition": "child; children",
+    "example": "孩子们在公园玩。",
+    "tags": "people"
+  },
+  {
+    "term": "朋友",
+    "reading": "péng you",
+    "definition": "friend",
+    "example": "他是我的好朋友。",
+    "tags": "people"
+  },
+  {
+    "term": "老师",
+    "reading": "lǎo shī",
+    "definition": "teacher",
+    "example": "老师讲得很清楚。",
+    "tags": "people"
+  },
+  {
+    "term": "学生",
+    "reading": "xué sheng",
+    "definition": "student",
+    "example": "我是大学学生。",
+    "tags": "people"
+  },
+  {
+    "term": "吃",
+    "reading": "chī",
+    "definition": "to eat",
+    "example": "你吃早饭了吗？",
+    "tags": "food"
+  },
+  {
+    "term": "喝",
+    "reading": "hē",
+    "definition": "to drink",
+    "example": "我想喝点茶。",
+    "tags": "food"
+  },
+  {
+    "term": "饭",
+    "reading": "fàn",
+    "definition": "cooked rice; a meal",
+    "example": "饭已经好了。",
+    "tags": "food"
+  },
+  {
+    "term": "水",
+    "reading": "shuǐ",
+    "definition": "water",
+    "example": "请给我一杯水。",
+    "tags": "food"
+  },
+  {
+    "term": "茶",
+    "reading": "chá",
+    "definition": "tea",
+    "example": "这是今年的新茶。",
+    "tags": "food"
+  },
+  {
+    "term": "咖啡",
+    "reading": "kā fēi",
+    "definition": "coffee",
+    "example": "我每天早上喝咖啡。",
+    "tags": "food"
+  },
+  {
+    "term": "米饭",
+    "reading": "mǐ fàn",
+    "definition": "cooked rice",
+    "example": "再来一碗米饭。",
+    "tags": "food"
+  },
+  {
+    "term": "面条",
+    "reading": "miàn tiáo",
+    "definition": "noodles",
+    "example": "这家的面条很好吃。",
+    "tags": "food"
+  },
+  {
+    "term": "菜",
+    "reading": "cài",
+    "definition": "dish; vegetable; cuisine",
+    "example": "你点几个菜？",
+    "tags": "food"
+  },
+  {
+    "term": "肉",
+    "reading": "ròu",
+    "definition": "meat",
+    "example": "这道菜没有肉。",
+    "tags": "food"
+  },
+  {
+    "term": "鱼",
+    "reading": "yú",
+    "definition": "fish",
+    "example": "清蒸鱼很鲜。",
+    "tags": "food"
+  },
+  {
+    "term": "水果",
+    "reading": "shuǐ guǒ",
+    "definition": "fruit",
+    "example": "夏天水果很便宜。",
+    "tags": "food"
+  },
+  {
+    "term": "好吃",
+    "reading": "hǎo chī",
+    "definition": "tasty; delicious",
+    "example": "这家的菜真好吃。",
+    "tags": "food"
+  },
+  {
+    "term": "饿",
+    "reading": "è",
+    "definition": "hungry; to starve",
+    "example": "我有点饿了。",
+    "tags": "food"
+  },
+  {
+    "term": "去",
+    "reading": "qù",
+    "definition": "to go; to leave for",
+    "example": "我要去机场。",
+    "tags": "verb"
+  },
+  {
+    "term": "来",
+    "reading": "lái",
+    "definition": "to come; to arrive",
+    "example": "他明天来北京。",
+    "tags": "verb"
+  },
+  {
+    "term": "走",
+    "reading": "zǒu",
+    "definition": "to walk; to leave",
+    "example": "我们走路过去吧。",
+    "tags": "verb"
+  },
+  {
+    "term": "车",
+    "reading": "chē",
+    "definition": "vehicle; car",
+    "example": "车停在楼下。",
+    "tags": "travel"
+  },
+  {
+    "term": "火车",
+    "reading": "huǒ chē",
+    "definition": "train",
+    "example": "火车晚点了。",
+    "tags": "travel"
+  },
+  {
+    "term": "飞机",
+    "reading": "fēi jī",
+    "definition": "aeroplane; aircraft",
+    "example": "飞机十点起飞。",
+    "tags": "travel"
+  },
+  {
+    "term": "机场",
+    "reading": "jī chǎng",
+    "definition": "airport",
+    "example": "去机场要一个小时。",
+    "tags": "travel"
+  },
+  {
+    "term": "车站",
+    "reading": "chē zhàn",
+    "definition": "station; bus stop",
+    "example": "下一站就是车站。",
+    "tags": "travel"
+  },
+  {
+    "term": "票",
+    "reading": "piào",
+    "definition": "ticket",
+    "example": "我买了两张票。",
+    "tags": "travel"
+  },
+  {
+    "term": "酒店",
+    "reading": "jiǔ diàn",
+    "definition": "hotel",
+    "example": "酒店离车站很近。",
+    "tags": "travel"
+  },
+  {
+    "term": "路",
+    "reading": "lù",
+    "definition": "road; route; way",
+    "example": "这条路很堵。",
+    "tags": "travel"
+  },
+  {
+    "term": "地图",
+    "reading": "dì tú",
+    "definition": "map",
+    "example": "手机上有地图。",
+    "tags": "travel"
+  },
+  {
+    "term": "工作",
+    "reading": "gōng zuò",
+    "definition": "work; job; to work",
+    "example": "他换了新工作。",
+    "tags": "work"
+  },
+  {
+    "term": "公司",
+    "reading": "gōng sī",
+    "definition": "company; firm",
+    "example": "公司在市中心。",
+    "tags": "work"
+  },
+  {
+    "term": "会议",
+    "reading": "huì yì",
+    "definition": "meeting; conference",
+    "example": "会议推迟了。",
+    "tags": "work"
+  },
+  {
+    "term": "钱",
+    "reading": "qián",
+    "definition": "money",
+    "example": "我没带够钱。",
+    "tags": "money"
+  },
+  {
+    "term": "买",
+    "reading": "mǎi",
+    "definition": "to buy",
+    "example": "你在哪里买的？",
+    "tags": "money"
+  },
+  {
+    "term": "卖",
+    "reading": "mài",
+    "definition": "to sell",
+    "example": "他们按斤卖茶。",
+    "tags": "money"
+  },
+  {
+    "term": "学校",
+    "reading": "xué xiào",
+    "definition": "school",
+    "example": "学校就在这条街上。",
+    "tags": "study"
+  },
+  {
+    "term": "学习",
+    "reading": "xué xí",
+    "definition": "to study; to learn; study",
+    "example": "我在学习中文。",
+    "tags": "study"
+  },
+  {
+    "term": "书",
+    "reading": "shū",
+    "definition": "book",
+    "example": "这本书很有意思。",
+    "tags": "study"
+  },
+  {
+    "term": "问题",
+    "reading": "wèn tí",
+    "definition": "question; problem",
+    "example": "我有一个问题。",
+    "tags": "study"
+  },
+  {
+    "term": "考试",
+    "reading": "kǎo shì",
+    "definition": "exam; to take an exam",
+    "example": "考试考了两个小时。",
+    "tags": "study"
+  },
+  {
+    "term": "电脑",
+    "reading": "diàn nǎo",
+    "definition": "computer",
+    "example": "我的电脑坏了。",
+    "tags": "tech"
+  },
+  {
+    "term": "手机",
+    "reading": "shǒu jī",
+    "definition": "mobile phone",
+    "example": "手机没电了。",
+    "tags": "tech"
+  },
+  {
+    "term": "网络",
+    "reading": "wǎng luò",
+    "definition": "network; the internet",
+    "example": "网络不太稳定。",
+    "tags": "tech"
+  },
+  {
+    "term": "软件",
+    "reading": "ruǎn jiàn",
+    "definition": "software",
+    "example": "这个软件需要更新。",
+    "tags": "tech"
+  },
+  {
+    "term": "文件",
+    "reading": "wén jiàn",
+    "definition": "file; document",
+    "example": "请把文件发给我。",
+    "tags": "tech"
+  },
+  {
+    "term": "密码",
+    "reading": "mì mǎ",
+    "definition": "password; code",
+    "example": "我忘了密码。",
+    "tags": "tech"
+  },
+  {
+    "term": "搜索",
+    "reading": "sōu suǒ",
+    "definition": "to search; search",
+    "example": "按名字搜索就行。",
+    "tags": "tech"
+  },
+  {
+    "term": "下载",
+    "reading": "xià zài",
+    "definition": "to download",
+    "example": "下载已经完成。",
+    "tags": "tech"
+  },
+  {
+    "term": "数据",
+    "reading": "shù jù",
+    "definition": "data",
+    "example": "记得备份数据。",
+    "tags": "tech"
+  },
+  {
+    "term": "消息",
+    "reading": "xiāo xi",
+    "definition": "news; message",
+    "example": "我给你留了消息。",
+    "tags": "tech"
+  },
+  {
+    "term": "好",
+    "reading": "hǎo",
+    "definition": "good; well; fine",
+    "example": "这个主意很好。",
+    "tags": "description"
+  },
+  {
+    "term": "大",
+    "reading": "dà",
+    "definition": "big; large",
+    "example": "房间不太大。",
+    "tags": "description"
+  },
+  {
+    "term": "小",
+    "reading": "xiǎo",
+    "definition": "small; little; young",
+    "example": "声音太小了。",
+    "tags": "description"
+  },
+  {
+    "term": "多",
+    "reading": "duō",
+    "definition": "many; much; more",
+    "example": "今天人很多。",
+    "tags": "quantity"
+  },
+  {
+    "term": "少",
+    "reading": "shǎo",
+    "definition": "few; little; to lack",
+    "example": "时间太少了。",
+    "tags": "quantity"
+  },
+  {
+    "term": "快",
+    "reading": "kuài",
+    "definition": "fast; quick; soon",
+    "example": "快一点，要迟到了。",
+    "tags": "description"
+  },
+  {
+    "term": "慢",
+    "reading": "màn",
+    "definition": "slow; to slow down",
+    "example": "请说慢一点。",
+    "tags": "description"
+  },
+  {
+    "term": "新",
+    "reading": "xīn",
+    "definition": "new",
+    "example": "这是新出的版本。",
+    "tags": "description"
+  },
+  {
+    "term": "旧",
+    "reading": "jiù",
+    "definition": "old; used; former",
+    "example": "这台电脑有点旧。",
+    "tags": "description"
+  },
+  {
+    "term": "高兴",
+    "reading": "gāo xìng",
+    "definition": "happy; glad; pleased",
+    "example": "见到你很高兴。",
+    "tags": "feeling"
+  },
+  {
+    "term": "累",
+    "reading": "lèi",
+    "definition": "tired; tiring",
+    "example": "今天太累了。",
+    "tags": "feeling"
+  },
+  {
+    "term": "忙",
+    "reading": "máng",
+    "definition": "busy; to be busy with",
+    "example": "我这周很忙。",
+    "tags": "feeling"
+  },
+  {
+    "term": "难",
+    "reading": "nán",
+    "definition": "difficult; hard",
+    "example": "中文的声调很难。",
+    "tags": "description"
+  },
+  {
+    "term": "容易",
+    "reading": "róng yì",
+    "definition": "easy; likely to",
+    "example": "这道题很容易。",
+    "tags": "description"
+  },
+  {
+    "term": "重要",
+    "reading": "zhòng yào",
+    "definition": "important; significant",
+    "example": "这个细节很重要。",
+    "tags": "description"
+  },
+  {
+    "term": "贵",
+    "reading": "guì",
+    "definition": "expensive; honourable",
+    "example": "这家餐厅有点贵。",
+    "tags": "description"
+  },
+  {
+    "term": "便宜",
+    "reading": "pián yi",
+    "definition": "cheap; inexpensive",
+    "example": "票很便宜。",
+    "tags": "description"
+  },
+  {
+    "term": "漂亮",
+    "reading": "piào liang",
+    "definition": "pretty; beautiful",
+    "example": "这里的风景很漂亮。",
+    "tags": "description"
+  },
+  {
+    "term": "是",
+    "reading": "shì",
+    "definition": "to be; yes; correct",
+    "example": "他是我的同事。",
+    "tags": "verb"
+  },
+  {
+    "term": "有",
+    "reading": "yǒu",
+    "definition": "to have; there is",
+    "example": "我有两个问题。",
+    "tags": "verb"
+  },
+  {
+    "term": "说",
+    "reading": "shuō",
+    "definition": "to say; to speak",
+    "example": "你说得对。",
+    "tags": "verb"
+  },
+  {
+    "term": "看",
+    "reading": "kàn",
+    "definition": "to look; to watch; to read",
+    "example": "我在看书。",
+    "tags": "verb"
+  },
+  {
+    "term": "听",
+    "reading": "tīng",
+    "definition": "to listen; to hear",
+    "example": "我听不清楚。",
+    "tags": "verb"
+  },
+  {
+    "term": "做",
+    "reading": "zuò",
+    "definition": "to do; to make",
+    "example": "你在做什么？",
+    "tags": "verb"
+  },
+  {
+    "term": "想",
+    "reading": "xiǎng",
+    "definition": "to think; to want; to miss",
+    "example": "我想回家了。",
+    "tags": "verb"
+  },
+  {
+    "term": "要",
+    "reading": "yào",
+    "definition": "to want; to need; will",
+    "example": "我要一杯咖啡。",
+    "tags": "verb"
+  },
+  {
+    "term": "知道",
+    "reading": "zhī dào",
+    "definition": "to know; to be aware of",
+    "example": "我不知道她的名字。",
+    "tags": "verb"
+  },
+  {
+    "term": "认识",
+    "reading": "rèn shi",
+    "definition": "to know someone; to recognise",
+    "example": "我们认识十年了。",
+    "tags": "verb"
+  },
+  {
+    "term": "喜欢",
+    "reading": "xǐ huan",
+    "definition": "to like; to be fond of",
+    "example": "我很喜欢这首歌。",
+    "tags": "verb"
+  },
+  {
+    "term": "帮助",
+    "reading": "bāng zhù",
+    "definition": "to help; help",
+    "example": "谢谢你的帮助。",
+    "tags": "verb"
+  },
+  {
+    "term": "等",
+    "reading": "děng",
+    "definition": "to wait; to wait for; etc.",
+    "example": "请在门口等我。",
+    "tags": "verb"
+  },
+  {
+    "term": "开始",
+    "reading": "kāi shǐ",
+    "definition": "to begin; to start; beginning",
+    "example": "电影八点开始。",
+    "tags": "verb"
+  },
+  {
+    "term": "结束",
+    "reading": "jié shù",
+    "definition": "to end; to finish",
+    "example": "会议已经结束了。",
+    "tags": "verb"
+  },
+  {
+    "term": "记得",
+    "reading": "jì de",
+    "definition": "to remember",
+    "example": "记得锁门。",
+    "tags": "verb"
+  },
+  {
+    "term": "忘记",
+    "reading": "wàng jì",
+    "definition": "to forget",
+    "example": "我忘记他的名字了。",
+    "tags": "verb"
+  }
+]

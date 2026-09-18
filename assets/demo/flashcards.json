@@ -1,0 +1,86 @@
+[
+  {
+    "term": "加油",
+    "reading": "jiā yóu",
+    "definition": "Go for it; keep it up. Literally 'add fuel' — the standard way to cheer someone on.",
+    "example": "比赛快开始了，加油！",
+    "tags": "idiom, encouragement"
+  },
+  {
+    "term": "马马虎虎",
+    "reading": "mǎ ma hū hū",
+    "definition": "So-so; careless. Used both for 'not bad' and for sloppy work.",
+    "example": "他做事有点马马虎虎。",
+    "tags": "idiom"
+  },
+  {
+    "term": "入乡随俗",
+    "reading": "rù xiāng suí sú",
+    "definition": "When in Rome, do as the Romans do.",
+    "example": "来了就入乡随俗吧。",
+    "tags": "chengyu"
+  },
+  {
+    "term": "一石二鸟",
+    "reading": "yī shí èr niǎo",
+    "definition": "To kill two birds with one stone.",
+    "example": "这样安排可以一石二鸟。",
+    "tags": "chengyu"
+  },
+  {
+    "term": "不好意思",
+    "reading": "bù hǎo yì si",
+    "definition": "Excuse me; sorry — also 'embarrassed'. Softer than 对不起.",
+    "example": "不好意思，打扰一下。",
+    "tags": "idiom, courtesy"
+  },
+  {
+    "term": "差不多",
+    "reading": "chà bu duō",
+    "definition": "Almost; about the same; good enough.",
+    "example": "时间差不多了，我们走吧。",
+    "tags": "idiom"
+  },
+  {
+    "term": "没事",
+    "reading": "méi shì",
+    "definition": "It is nothing; no problem; I am fine.",
+    "example": "没事，我自己来。",
+    "tags": "idiom"
+  },
+  {
+    "term": "慢慢来",
+    "reading": "màn màn lái",
+    "definition": "Take your time; one step at a time.",
+    "example": "别着急，慢慢来。",
+    "tags": "idiom, encouragement"
+  },
+  {
+    "term": "有道理",
+    "reading": "yǒu dào lǐ",
+    "definition": "That makes sense; you have a point.",
+    "example": "你说得有道理。",
+    "tags": "idiom"
+  },
+  {
+    "term": "随便",
+    "reading": "suí biàn",
+    "definition": "Whatever you like; casual; as one pleases.",
+    "example": "吃什么都行，我随便。",
+    "tags": "idiom"
+  },
+  {
+    "term": "拍马屁",
+    "reading": "pāi mǎ pì",
+    "definition": "To flatter; to suck up. Literally 'pat the horse's rump'.",
+    "example": "他最会拍马屁了。",
+    "tags": "idiom, slang"
+  },
+  {
+    "term": "走后门",
+    "reading": "zǒu hòu mén",
+    "definition": "To pull strings; to use back-door connections.",
+    "example": "这件事他是走后门办成的。",
+    "tags": "idiom, slang"
+  }
+]

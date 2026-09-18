@@ -9,6 +9,21 @@ dictionaries, which languages, and your own flashcards.
 
 Built with React Native and Expo (SDK 57), iOS only.
 
+## Try it
+
+A first launch seeds a working English/Chinese dictionary, so there is something to find in
+Spotlight before you import anything:
+
+| Collection | Entries |
+| --- | --- |
+| English → 中文 (demo) | 180 everyday words with IPA, a Chinese gloss and an example sentence |
+| 中文 → English (demo) | 125 common words with tone-marked pinyin and an example |
+| My Flashcards | 12 idioms and set phrases — the deck the Cards tab writes into |
+
+Both directions are indexed, so searching `coffee` in Spotlight returns `coffee → n. 咖啡` and
+`咖啡 → coffee`. It is ordinary data: edit it, switch it off per collection, or delete it from
+Library once your own dictionaries are in. The same files are in `assets/demo/` and import as-is.
+
 ## What it does
 
 - **Anything you add is searchable from the system.** Entries are pushed into Core Spotlight with the
@@ -39,8 +54,8 @@ development build you can keep using with `npm start` afterwards.
 
 ## Importing a dictionary
 
-Library → **Import dictionary** accepts JSON, CSV, and TSV. Column names are matched loosely, so
-most exports work untouched:
+Library → **Import dictionary** accepts JSON, CSV, TSV, and CC-CEDICT. Column names are matched
+loosely, so most exports work untouched:
 
 | Meaning | Accepted headers |
 | --- | --- |
@@ -52,6 +67,13 @@ most exports work untouched:
 
 Headerless files are read positionally as `term, definition` or `term, reading, definition`. Sample
 files live in `examples/`.
+
+**CC-CEDICT** is recognised by line shape rather than file extension, so
+[MDBG's `.u8` release](https://www.mdbg.net/chinese/dictionary?page=cc-cedict) and any trimmed
+subset of it import untouched. Numbered pinyin becomes tone marks on the way in (`chuan2 tong3` →
+`chuán tǒng`), since a Spotlight preview is no place for tone digits, and the traditional form is
+stored as a tag so it stays searchable. At ~122k entries it will hit the per-collection cap — set
+the cap before the first sync, or trim the file to the frequency band you actually look up.
 
 Set the source and translation language on the collection after importing; both are fed to Spotlight
 as keywords, so `zh-Hans` finds your Chinese decks.
@@ -80,3 +102,5 @@ moves the UI updates the drawing in the same commit.
   Japanese, so full-text search inside definitions is word-based only.
 - Import reads the whole file into memory. Very large dictionaries should be split before importing.
 - Android and web are out of scope — `platforms` is pinned to `ios`.
+- Nothing is exported. A dictionary can be re-imported after a reinstall; a hand-written deck
+  cannot.

@@ -112,10 +112,25 @@ export async function listEntries(
   return rows.map(toEntry);
 }
 
+/**
+ * Round-robins across collections instead of taking a flat newest-first slice: a
+ * freshly imported dictionary shares one timestamp across every row, and would
+ * otherwise bury every other collection. A just-added entry still lands first,
+ * since it is rank 1 in its collection and the newest among the rank-1 rows.
+ */
 export async function recentEntries(limit = 30): Promise<EntryWithCollection[]> {
   const db = await getDatabase();
-  const rows = await db.getAllAsync<JoinedEntryRow>(
-    `${JOIN_SELECT} ORDER BY e.updated_at DESC LIMIT ?`,
+  const rows = await db.getAllAsync<JoinedEntryRow & { rank: number }>(
+    `SELECT * FROM (
+       SELECT e.*, e.rowid AS row_id, c.name AS collection_name, c.kind AS collection_kind,
+              c.indexed AS collection_indexed,
+              ROW_NUMBER() OVER (
+                PARTITION BY e.collection_id ORDER BY e.updated_at DESC, e.rowid DESC
+              ) AS rank
+       FROM entries e JOIN collections c ON c.id = e.collection_id
+     )
+     ORDER BY rank ASC, updated_at DESC, row_id DESC
+     LIMIT ?`,
     [limit]
   );
   return rows.map(toJoinedEntry);

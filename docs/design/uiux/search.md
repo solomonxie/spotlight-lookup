@@ -8,23 +8,23 @@ In-app search over every entry. First tab, the app's home.
  │ Search every indexed word and card           │
  └──────────────────────────────────────────────┘
 
- RECENT
+ RECENT                          ← one from each collection, newest first
 
  ╭──────────────────────────────────────────────╮
- │ idempotent                                   │
- │ Running it twice changes nothing more than   │
- │ running it once.                             │
- │ My Flashcards           ●  in Spotlight      │
+ │ 走后门  zǒu hòu mén                           │
+ │ To pull strings; to use back-door            │
+ │ connections.                                 │
+ │ My Flashcards          ●  in Spotlight       │
  ╰──────────────────────────────────────────────╯
  ╭──────────────────────────────────────────────╮
- │ resilient  /rɪˈzɪliənt/                      │
- │ adj. 有韧性的；能快速恢复的                     │
- │ English → 中文 (starter) ●  in Spotlight     │
+ │ 忘记  wàng jì                                 │
+ │ to forget                                    │
+ │ 中文 → English (demo)  ●  in Spotlight       │
  ╰──────────────────────────────────────────────╯
  ╭──────────────────────────────────────────────╮
- │ ephemeral  /ɪˈfem(ə)rəl/                     │
- │ adj. 短暂的；转瞬即逝的                        │
- │ English → 中文 (starter) ●  in Spotlight     │
+ │ forget  /fərˈɡet/                            │
+ │ v. 忘记；遗忘                                  │
+ │ English → 中文 (demo)  ●  in Spotlight       │
  ╰──────────────────────────────────────────────╯
 
  ────────────────────────────────────────────────
@@ -34,26 +34,40 @@ In-app search over every entry. First tab, the app's home.
 
 Reached from: launch · back from Entry · tab bar
 
+RECENT round-robins the collections. A freshly imported dictionary writes one
+timestamp across every row, so a flat newest-first list would show that import
+and nothing else; an entry the user just added is still first, being the
+newest of the rank-one rows.
+
 ## Typing
 
 ```
  ┌──────────────────────────────────────────────┐
- │ resil▌                                   ✕   │ ← clear button while editing
+ │ coffee▌                                  ✕   │
  └──────────────────────────────────────────────┘
 
- 2 matches                                       ← replaces RECENT
+ 3 matches                                     ← replaces RECENT
 
  ╭──────────────────────────────────────────────╮
- │ resilient  /rɪˈzɪliənt/                      │ ← exact/prefix hits first
+ │ coffee  /ˈkɔːfi/                             │ ← exact term, rank 0
+ │ n. 咖啡                                       │
+ │ English → 中文 (demo)  ●  in Spotlight       │
  ╰──────────────────────────────────────────────╯
  ╭──────────────────────────────────────────────╮
- │ resilience  /rɪˈzɪliəns/                     │
+ │ 咖啡  kā fēi                                  │ ← found by its definition
+ │ coffee                                       │
+ │ 中文 → English (demo)  ●  in Spotlight       │
+ ╰──────────────────────────────────────────────╯
+ ╭──────────────────────────────────────────────╮
+ │ sugar  /ˈʃʊɡər/                              │ ← found by its example,
+ │ n. 糖；食糖                                    │   "No sugar in my coffee"
+ │ English → 中文 (demo)  ●  in Spotlight       │
  ╰──────────────────────────────────────────────╯
 ```
 
 Results refresh 180ms after the last keystroke. Ranking: exact term, then
-prefix, then full-text across definition, example and tags — so searching
-`recover` finds `resilient` through its example sentence.
+prefix, then full-text across definition, example and tags — which is why one
+English query reaches both directions of the dictionary.
 
 ## States
 
@@ -61,6 +75,7 @@ prefix, then full-text across definition, example and tags — so searching
 empty      Your library is empty
            Import a dictionary file or add a
            flashcard to start filling Spotlight.
+           ← only after the demo data is deleted
 
 no match   Nothing found
            No entry matches "asdf". Import a
@@ -107,6 +122,8 @@ expo go    ╭──────────────────────
   people are meant to reach for, and duplicating its affordances here invites
   using the wrong one.
 - CJK headwords match exactly and by prefix. `unicode61` does not segment
-  Chinese or Japanese, so full-text search inside a definition is word-based.
+  Chinese or Japanese, so searching inside a Chinese definition is word-based —
+  `咖啡` is found by its own headword and by the English gloss, not by a
+  substring of a longer Chinese sentence.
 - Open: the ● / ○ dot per row is engineering state. Useful while the sync is
   new, probably noise once it is trusted. Revisit after device testing.

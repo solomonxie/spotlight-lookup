@@ -3,21 +3,20 @@
 One word or card in full. The landing screen for a Spotlight tap.
 
 ```
- ‹ Back              resilient
+ ‹ Back                谢谢
 
  ╭──────────────────────────────────────────────╮
- │ resilient                                    │
- │ /rɪˈzɪliənt/                                 │
+ │ 谢谢                                          │
+ │ xiè xie                                      │
  │                                              │
- │ adj. 有韧性的；能快速恢复的                     │
- │ A resilient system recovers without a        │
- │ restart.                                     │ ← example, italic
+ │ thank you; thanks                            │
+ │ 谢谢你的帮助。                                 │ ← example, italic
  ╰──────────────────────────────────────────────╯
 
  DETAILS
  ╭──────────────────────────────────────────────╮
- │ ( English → 中文 (starter) ) ( starter )     │
- │ Indexed 17/09/2026, 21:30:14                 │
+ │ ( 中文 → English (demo) ) ( courtesy )        │
+ │ Indexed 17/09/2026, 23:25:41                 │
  ╰──────────────────────────────────────────────╯
 
  [[ Edit ]]
@@ -37,11 +36,12 @@ queued     Queued for the next Spotlight sync
 
 excluded   This collection is excluded from Spotlight
 
-card       │ idempotent                          │ ← no reading, no example
+card       │ 差不多                               │
+           │ chà bu duō                          │
            │                                     │
-           │ Running it twice changes nothing    │
-           │ more than running it once.          │
-           │ ( My Flashcards ) ( engineering )   │
+           │ Almost; about the same; good        │
+           │ enough.                             │
+           │ ( My Flashcards ) ( idiom )         │
 
 deleted              Entry not found
            It may have been deleted since
@@ -59,25 +59,25 @@ loading    (blank background, no spinner)        ← a local read, ~1 frame
  ╭──────────────────────────────────────────────╮
  │ TERM                                         │
  │ ┌──────────────────────────────────────────┐ │
- │ │ resilient                                │ │
+ │ │ 谢谢                                      │ │
  │ └──────────────────────────────────────────┘ │
  │ READING                                      │
  │ ┌──────────────────────────────────────────┐ │
- │ │ /rɪˈzɪliənt/                             │ │
+ │ │ xiè xie                                  │ │
  │ └──────────────────────────────────────────┘ │
  │ DEFINITION                                   │
  │ ┌──────────────────────────────────────────┐ │
- │ │ adj. 有韧性的；能快速恢复的                 │ │
+ │ │ thank you; thanks                        │ │
  │ │                                          │ │
  │ └──────────────────────────────────────────┘ │
  │ EXAMPLE                                      │
  │ ┌──────────────────────────────────────────┐ │
- │ │ A resilient system recovers without a    │ │
- │ │ restart.                                 │ │
+ │ │ 谢谢你的帮助。                             │ │
+ │ │                                          │ │
  │ └──────────────────────────────────────────┘ │
  │ TAGS                                         │
  │ ┌──────────────────────────────────────────┐ │
- │ │ starter                                  │ │
+ │ │ courtesy                                 │ │
  │ └──────────────────────────────────────────┘ │
  │ [[ Save ]]                                   │
  │ [ Cancel ]                                   │

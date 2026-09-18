@@ -8,8 +8,8 @@ not. Fourth tab.
 
  INDEX STATUS
  ╭──────────────────────────────────────────────╮
- │ Entries in app                          18   │
- │ In Spotlight                            18   │
+ │ Entries in app                         317   │
+ │ In Spotlight                           317   │
  │ Waiting to index                         0   │
  ╰──────────────────────────────────────────────╯
 
@@ -31,16 +31,16 @@ added actually findable?
 ## States
 
 ```
-working    │ Entries in app                 18  │
-           │ In Spotlight                   18  │
+working    │ Entries in app                317  │
+           │ In Spotlight                  317  │
            │ Waiting to index                0  │
 
-behind     │ Entries in app               4839  │
-           │ In Spotlight                   18  │
-           │ Waiting to index             4821  │ ← import not synced yet
+behind     │ Entries in app             122621  │
+           │ In Spotlight                  317  │
+           │ Waiting to index           122304  │ ← import not synced yet
 
-syncing    │ Waiting to index             3200  │
-           │ indexing 1621/4821                 │ ← accent, replaces nothing
+syncing    │ Waiting to index           102304  │
+           │ indexing 20000/20000               │ ← accent, replaces nothing
            [[ ⟳ ]]
            [ Rebuild index ]·                   ← disabled during a run
            [ Clear Spotlight index ]!·
@@ -85,7 +85,7 @@ expo go    ╭──────────────────────
 
  ┌──────────────────────────────────────────┐
  │  Index updated                           │
- │  4821 entries added, 0 removed.          │
+ │  20000 entries added, 0 removed.         │
  │                                 ( OK )   │
  └──────────────────────────────────────────┘
 
@@ -93,7 +93,7 @@ expo go    ╭──────────────────────
 
  ┌──────────────────────────────────────────┐
  │  Index rebuilt                           │
- │  4839 entries added, 0 removed.          │
+ │  20317 entries added, 0 removed.         │
  │                                 ( OK )   │
  └──────────────────────────────────────────┘
 
@@ -139,4 +139,5 @@ expo go    ╭──────────────────────
   collection, so a bar would jump backwards.
 - Open: nothing here survives a reinstall. Imported dictionaries and
   hand-written cards both live only in the app's SQLite file, and there is no
-  export. The cards are the irreplaceable half.
+  export. The cards are the irreplaceable half — a re-import gets a dictionary
+  back, nothing gets a deck back.
