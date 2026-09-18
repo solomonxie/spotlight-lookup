@@ -1,6 +1,7 @@
 # Dictionary and Flashcard Lookup from iOS Spotlight
 
-> 🚧 Work in progress — builds and runs, but not yet tested on a physical device or released.
+> 🚧 Work in progress — verified in the iOS 27 simulator (entries reach Core Spotlight), not yet
+> tried on a physical device or released.
 
 Pull down on the Home Screen, type a word, and see its definition and translation right in the
 results — the way Bing Dictionary and friends do it, except you decide what gets indexed: which
@@ -19,7 +20,7 @@ Built with React Native and Expo (SDK 57), iOS only.
 - **Two kinds of collections:** imported dictionaries and hand-written flashcards. Both behave
   identically in Spotlight.
 - **In-app search too**, backed by SQLite FTS5, with exact matches first, then prefixes, then
-  full-text hits across definitions and tags.
+  full-text hits across definitions, examples and tags.
 
 ## Expo Go is not enough
 
