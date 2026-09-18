@@ -5,19 +5,19 @@ strings; iOS decides everything else.
 
 ```
  ┌──────────────────────────────────────────┐
- │ ⌕ resilient                          ✕   │
+ │ ⌕ coffee                             ✕   │
  └──────────────────────────────────────────┘
 
  LOOKUP                                    ›
-  ▣  resilient                                ← title
-      /rɪˈzɪliənt/ · English → 中文 (starter)  ← subtitle
-      adj. 有韧性的；能快速恢复的                ← body, 2 lines max
-      A resilient system recovers without
-      a restart.
+  ▣  coffee                                   ← title
+      /ˈkɔːfi/ · English → 中文 (demo)         ← subtitle
+      n. 咖啡                                  ← body, 2 lines max
+      I drink coffee in the morning.
 
-  ▣  resilience
-      /rɪˈzɪliəns/ · English → 中文 (starter)
-      n. 韧性；恢复力
+  ▣  咖啡
+      kā fēi · 中文 → English (demo)
+      coffee
+      我每天早上喝咖啡。
 ```
 
 Reached from: pull down on the Home Screen · swipe right to Today view
@@ -40,19 +40,19 @@ exactly the ones worth indexing.
 ## States
 
 ```
-matched    ▣ resilient
-            /rɪˈzɪliənt/ · English → 中文 (starter)
-            adj. 有韧性的；能快速恢复的
+matched    ▣ quiet
+            /ˈkwaɪət/ · English → 中文 (demo)
+            adj. 安静的；平静的
 
-no reading ▣ idempotent                        ← flashcards have no reading
-            My Flashcards
-            Running it twice changes nothing
-            more than running it once.
+card       ▣ 加油
+            jiā yóu · My Flashcards
+            Go for it; keep it up. Literally
+            'add fuel' — the standard way to…
 
-long       ▣ 一期一会
-            いちごいちえ · Japanese idioms
-            One meeting, one chance — treat
-            every encounter as unrepeatabl…    ← iOS truncates, we don't
+long       ▣ 入乡随俗
+            rù xiāng suí sú · My Flashcards
+            When in Rome, do as the Romans
+            do………                              ← iOS truncates, we don't
 
 not indexed                                    ← collection switched off,
            (no row at all)                       or entry still queued
@@ -75,7 +75,7 @@ Spotlight row ──tap──▶ iOS delivers NSUserActivity
 ## ✗ Rejected
 
 ```
-✗  ▣  resilient
+✗  ▣  coffee
        Lookup
 ```
 Title plus app name is what a generic Core Spotlight integration produces. It
@@ -83,9 +83,9 @@ forces a tap to learn anything, which is the entire behaviour this app exists
 to avoid.
 
 ```
-✗  ▣  resilient
-       adj. 有韧性的；能快速恢复的 · A resilient system
-       recovers without a restart. · English → 中文…
+✗  ▣  coffee
+       n. 咖啡 · I drink coffee in the morning. ·
+       English → 中文 (demo) · /ˈkɔːfi/…
 ```
 Everything on one line truncates the definition away on a narrow phone. The
 reading and collection go first precisely because they are short and bounded.
@@ -97,3 +97,5 @@ reading and collection go first precisely because they are short and bounded.
   screenshot. First device run should re-check the truncation points.
 - `keywords` carries the language tag (`zh-Hans`), so a deck can be found by
   searching the language name as well as the word.
+- Both directions of the demo dictionary are indexed, so one English query
+  surfaces the English headword and the Chinese one whose gloss matches it.

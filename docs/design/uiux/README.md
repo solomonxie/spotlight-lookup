@@ -64,4 +64,6 @@ CAPS in a tab bar      the selected tab — notation only, never copy
 real data      "resilient · /rɪˈzɪliənt/ · adj. 有韧性的" — never lorem
 light theme    dark mode swaps tokens only; see components.md → Palette
 ← outside      annotations sit right of the frame, never inside it
+CJK drift      Chinese is double-width, so frames around 中文 do not
+               line up with the ASCII ones — read those rows for content
 ```
