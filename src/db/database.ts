@@ -1,21 +1,77 @@
-import * as SQLite from 'expo-sqlite';
+import { type DB, type Scalar, open } from '@op-engineering/op-sqlite';
 
 import { normalizeSearchText } from '../lib/normalize';
 import { SCHEMA, SCHEMA_VERSION } from './schema';
 
 const DATABASE_NAME = 'spotlight-lookup.db';
 
-let connection: Promise<SQLite.SQLiteDatabase> | null = null;
+export type Params = Scalar[];
 
-export function getDatabase(): Promise<SQLite.SQLiteDatabase> {
-  connection ??= SQLite.openDatabaseAsync(DATABASE_NAME).then(async (db) => {
+export type Statement = {
+  executeAsync(params?: Params): Promise<void>;
+  finalizeAsync(): Promise<void>;
+};
+
+/**
+ * The query surface the rest of `src/db` is written against. Keeping it here means a
+ * change of SQLite driver stays a change of one file.
+ */
+export class Database {
+  constructor(private readonly db: DB) {}
+
+  async execAsync(sql: string): Promise<void> {
+    await this.db.execute(sql);
+  }
+
+  async runAsync(sql: string, params: Params = []): Promise<void> {
+    await this.db.execute(sql, params);
+  }
+
+  async getAllAsync<T>(sql: string, params: Params = []): Promise<T[]> {
+    const { rows } = await this.db.execute(sql, params);
+    return rows as T[];
+  }
+
+  async getFirstAsync<T>(sql: string, params: Params = []): Promise<T | null> {
+    const rows = await this.getAllAsync<T>(sql, params);
+    return rows[0] ?? null;
+  }
+
+  async prepareAsync(sql: string): Promise<Statement> {
+    const statement = this.db.prepareStatement(sql);
+    return {
+      async executeAsync(params: Params = []) {
+        await statement.bind(params);
+        await statement.execute();
+      },
+      async finalizeAsync() {},
+    };
+  }
+
+  async withTransactionAsync(body: () => Promise<void>): Promise<void> {
+    await this.db.execute('BEGIN');
+    try {
+      await body();
+      await this.db.execute('COMMIT');
+    } catch (error) {
+      await this.db.execute('ROLLBACK');
+      throw error;
+    }
+  }
+}
+
+let connection: Promise<Database> | null = null;
+
+export function getDatabase(): Promise<Database> {
+  connection ??= (async () => {
+    const db = new Database(open({ name: DATABASE_NAME }));
     await migrate(db);
     return db;
-  });
+  })();
   return connection;
 }
 
-async function addMissingColumns(db: SQLite.SQLiteDatabase): Promise<void> {
+async function addMissingColumns(db: Database): Promise<void> {
   const columns = await db.getAllAsync<{ name: string }>('PRAGMA table_info(entries)');
   if (columns.length === 0) return; // fresh database; CREATE TABLE covers it
 
@@ -28,7 +84,7 @@ async function addMissingColumns(db: SQLite.SQLiteDatabase): Promise<void> {
 }
 
 /** SQLite cannot fold tone marks, so the normalised columns are filled from JavaScript. */
-async function backfillNormalizedText(db: SQLite.SQLiteDatabase): Promise<void> {
+async function backfillNormalizedText(db: Database): Promise<void> {
   const rows = await db.getAllAsync<{ id: string; term: string; reading: string | null }>(
     "SELECT id, term, reading FROM entries WHERE term_norm = ''"
   );
@@ -56,7 +112,7 @@ async function backfillNormalizedText(db: SQLite.SQLiteDatabase): Promise<void> 
  * Both search indexes are derived from `entries`, so a schema change throws them
  * away and rebuilds rather than migrating them row by row.
  */
-async function migrate(db: SQLite.SQLiteDatabase): Promise<void> {
+async function migrate(db: Database): Promise<void> {
   const row = await db.getFirstAsync<{ user_version: number }>('PRAGMA user_version');
   const version = row?.user_version ?? 0;
   const stale = version < SCHEMA_VERSION;
@@ -80,5 +136,3 @@ async function migrate(db: SQLite.SQLiteDatabase): Promise<void> {
     await db.execAsync(`PRAGMA user_version = ${SCHEMA_VERSION};`);
   }
 }
-
-export type { SQLiteDatabase } from 'expo-sqlite';
