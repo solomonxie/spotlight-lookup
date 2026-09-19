@@ -1,7 +1,7 @@
 # Screen map and drawing conventions
 
 Every surface in the app, the edges between them, and the glyphs these files
-use. Filenames match the screens in `app/`.
+use. Filenames match the screens in `src/screens/`.
 
 ```
                   iOS Home Screen
@@ -9,7 +9,7 @@ use. Filenames match the screens in `app/`.
                         ▼
               [ Spotlight search ]  ──▶ spotlight.md
                         │ tap a result
-                        │ spotlightlookup://entry/<id>
+                        │ NSUserActivity carrying the entry id
                         ▼
   Launch ──────────▶ Entry ◀────────────────┐
      │                 │ Edit               │

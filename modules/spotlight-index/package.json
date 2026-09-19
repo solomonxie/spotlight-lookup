@@ -1,0 +1,12 @@
+{
+  "name": "spotlight-index",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Core Spotlight indexing for dictionary entries and flashcards",
+  "main": "index.ts",
+  "codegenConfig": {
+    "name": "SpotlightIndexSpec",
+    "type": "modules",
+    "jsSrcsDir": "src"
+  }
+}

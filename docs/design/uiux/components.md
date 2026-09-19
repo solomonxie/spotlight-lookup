@@ -137,9 +137,9 @@ clearing a reading removes it rather than storing "".
 
 ```
  ╭──────────────────────────────────────────────╮
- │ Running without Core Spotlight — in-app      │
- │ search works, but system Spotlight indexing  │
- │ needs a development build (npx expo run:ios).│
+ │ iOS is not indexing right now — in-app       │
+ │ search still works, but nothing new reaches  │
+ │ system Spotlight.                            │
  ╰──────────────────────────────────────────────╯
 ```
 
