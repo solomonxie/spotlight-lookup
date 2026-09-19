@@ -113,11 +113,11 @@ no match   Nothing found
 
 999+       60 matches                           ← hard cap, no pagination
 
-expo go    ╭──────────────────────────────────╮
-           │ Running without Core Spotlight — │
-           │ in-app search works, but system  │
-           │ Spotlight indexing needs a       │
-           │ development build.               │
+no index   ╭──────────────────────────────────╮
+           │ iOS is not indexing right now —  │
+           │ in-app search still works, but   │
+           │ nothing new reaches system       │
+           │ Spotlight.                       │
            ╰──────────────────────────────────╯
            ← banner sits under the field, above the list
 ```

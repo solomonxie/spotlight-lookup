@@ -7,7 +7,7 @@ Pull down on the Home Screen, type a word, and see its definition and translatio
 results — the way Bing Dictionary and friends do it, except you decide what gets indexed: which
 dictionaries, which languages, and your own flashcards.
 
-Built with React Native and Expo (SDK 57), iOS only.
+Built with React Native 0.86, iOS only. No Expo — see `docs/design/no-expo.md`.
 
 ## Try it
 
@@ -38,20 +38,17 @@ Library once your own dictionaries are in. The same files are in `assets/demo/` 
   substring, then typo tolerance. Tone marks and accents are optional — `xiexie` finds 谢谢, `cafe`
   finds `café` — and a misspelling still lands: `delicous` → `delicious`, `beatiful` → `beautiful`.
 
-## Expo Go is not enough
-
-Core Spotlight is a native framework, so it cannot exist inside the stock Expo Go binary. The app
-detects this and degrades gracefully: everything works except system indexing, which is what you want
-while iterating on screens.
+## Building
 
 ```sh
 npm install
-npm start          # Expo Go — UI work, in-app search, no Spotlight
-npm run ios        # development build — the real thing
+npm run pods       # once, and after any native dependency changes
+npm run ios        # builds, installs and starts Metro
 ```
 
-`npm run ios` prebuilds the native project, compiles the local Spotlight module, and installs a
-development build you can keep using with `npm start` afterwards.
+Core Spotlight is a native framework, so there is no JavaScript-only way to run this: the local
+module in `modules/spotlight-index` is compiled into the app. `npm start` alone reloads JavaScript
+into an app that is already installed.
 
 ## Importing a dictionary
 
@@ -119,7 +116,8 @@ Two things worth knowing:
 
 Every screen, state, overlay and the Spotlight result row itself is drawn in
 `docs/design/uiux/` — start at its README for the screen map. A change that
-moves the UI updates the drawing in the same commit.
+moves the UI updates the drawing in the same commit. `docs/design/no-expo.md`
+records why the app runs on bare React Native.
 
 ## Known limits
 
@@ -128,6 +126,6 @@ moves the UI updates the drawing in the same commit.
 - Typo tolerance compares whole headwords. A misspelling of one word inside a multi-word term will
   not be caught.
 - Import reads the whole file into memory. Very large dictionaries should be split before importing.
-- Android and web are out of scope — `platforms` is pinned to `ios`.
+- Android and web are out of scope — there is no Android project.
 - Nothing is exported. A dictionary can be re-imported after a reinstall; a hand-written deck
   cannot.

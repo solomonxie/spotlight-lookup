@@ -23,8 +23,8 @@ One word or card in full. The landing screen for a Spotlight tap.
  [ Delete ]!
 ```
 
-Reached from: Look up · Collection · `spotlightlookup://entry/<id>` from a
-Spotlight result
+Reached from: Look up · Collection · a tapped Spotlight result, which
+arrives as an NSUserActivity carrying the entry id
 
 The title bar takes the term, so the word is still readable after the card
 scrolls away.

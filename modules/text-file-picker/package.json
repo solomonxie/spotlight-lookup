@@ -1,0 +1,12 @@
+{
+  "name": "text-file-picker",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Pick a text file with the system document browser and read it",
+  "main": "index.ts",
+  "codegenConfig": {
+    "name": "TextFilePickerSpec",
+    "type": "modules",
+    "jsSrcsDir": "src"
+  }
+}

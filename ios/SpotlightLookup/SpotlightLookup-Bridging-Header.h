@@ -1,0 +1,1 @@
+#import <SpotlightIndex/SpotlightOpenRegistry.h>

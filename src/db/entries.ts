@@ -1,6 +1,6 @@
 import { createId } from '../lib/id';
 import { editDistance, normalizeSearchText, trigrams, typoBudget } from '../lib/normalize';
-import { SQLiteDatabase, getDatabase } from './database';
+import { Database, getDatabase } from './database';
 import { CollectionKind, Entry, EntryWithCollection, NewEntry } from './types';
 
 type EntryRow = {
@@ -140,7 +140,7 @@ export async function searchEntries(query: string, limit = 60): Promise<EntryWit
  * `resilient`; bm25 puts the best overlap first and the distance budget cuts the rest.
  */
 async function fuzzyMatches(
-  db: SQLiteDatabase,
+  db: Database,
   norm: string,
   seen: Set<string>,
   limit: number

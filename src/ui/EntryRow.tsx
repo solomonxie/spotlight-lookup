@@ -1,53 +1,55 @@
-import { Link } from 'expo-router';
+import { useNavigation } from '@react-navigation/native';
+import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 import { EntryWithCollection } from '@/src/db/types';
+import type { RootStackParamList } from '@/src/navigation';
 
 import { radius, spacing, useTheme } from './theme';
 
 export function EntryRow({ entry }: { entry: EntryWithCollection }) {
   const { colors } = useTheme();
+  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   return (
-    <Link href={{ pathname: '/entry/[id]', params: { id: entry.id } }} asChild>
-      <Pressable
-        style={({ pressed }) => [
-          styles.row,
-          {
-            backgroundColor: colors.card,
-            borderColor: colors.border,
-            opacity: pressed ? 0.7 : 1,
-          },
-        ]}>
-        <View style={styles.headline}>
-          <Text style={[styles.term, { color: colors.text }]} numberOfLines={1}>
-            {entry.term}
-          </Text>
-          {entry.reading ? (
-            <Text style={[styles.reading, { color: colors.muted }]} numberOfLines={1}>
-              {entry.reading}
-            </Text>
-          ) : null}
-        </View>
-        <Text style={[styles.definition, { color: colors.text }]} numberOfLines={2}>
-          {entry.definition}
+    <Pressable
+      onPress={() => navigation.navigate('Entry', { id: entry.id })}
+      style={({ pressed }) => [
+        styles.row,
+        {
+          backgroundColor: colors.card,
+          borderColor: colors.border,
+          opacity: pressed ? 0.7 : 1,
+        },
+      ]}>
+      <View style={styles.headline}>
+        <Text style={[styles.term, { color: colors.text }]} numberOfLines={1}>
+          {entry.term}
         </Text>
-        <View style={styles.meta}>
-          <Text style={[styles.metaText, { color: colors.muted }]} numberOfLines={1}>
-            {entry.collectionName}
+        {entry.reading ? (
+          <Text style={[styles.reading, { color: colors.muted }]} numberOfLines={1}>
+            {entry.reading}
           </Text>
-          <View
-            style={[
-              styles.dot,
-              { backgroundColor: entry.indexedAt ? colors.success : colors.border },
-            ]}
-          />
-          <Text style={[styles.metaText, { color: colors.muted }]}>
-            {entry.indexedAt ? 'in Spotlight' : entry.collectionIndexed ? 'queued' : 'not indexed'}
-          </Text>
-        </View>
-      </Pressable>
-    </Link>
+        ) : null}
+      </View>
+      <Text style={[styles.definition, { color: colors.text }]} numberOfLines={2}>
+        {entry.definition}
+      </Text>
+      <View style={styles.meta}>
+        <Text style={[styles.metaText, { color: colors.muted }]} numberOfLines={1}>
+          {entry.collectionName}
+        </Text>
+        <View
+          style={[
+            styles.dot,
+            { backgroundColor: entry.indexedAt ? colors.success : colors.border },
+          ]}
+        />
+        <Text style={[styles.metaText, { color: colors.muted }]}>
+          {entry.indexedAt ? 'in Spotlight' : entry.collectionIndexed ? 'queued' : 'not indexed'}
+        </Text>
+      </View>
+    </Pressable>
   );
 }
 

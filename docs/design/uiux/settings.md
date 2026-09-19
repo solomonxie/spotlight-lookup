@@ -47,12 +47,10 @@ syncing    │ Waiting to index           102304  │
 
 removing   │ removing 40/120                    │ ← tombstones flush first
 
-expo go    ╭──────────────────────────────────╮
-           │ Core Spotlight is not part of    │ ← danger border
-           │ this binary. Expo Go cannot      │
-           │ index — run `npx expo run:ios`   │
-           │ once to get a development build  │
-           │ with the native module.          │
+no index   ╭──────────────────────────────────╮
+           │ iOS reports Core Spotlight as    │ ← danger border
+           │ unavailable, so nothing can be   │
+           │ indexed until it comes back.     │
            ╰──────────────────────────────────╯
            │ In Spotlight                    0  │
 ```
