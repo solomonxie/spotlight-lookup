@@ -12,8 +12,9 @@ Everything used on more than one screen. Source: `src/ui/`.
                 label stays sentence case and takes the accent tint
 ```
 
-Four tabs, always visible, never badged. Ionicons: `search`,
-`library-outline`, `albums-outline`, `options-outline`.
+Four tabs, always visible, never badged. The glyphs are drawn from views in
+`src/ui/icons.tsx` — a magnifier, books on a shelf, a stack of cards, and
+sliders — so four shapes cost no icon font and no dependency.
 
 ## EntryRow
 

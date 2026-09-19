@@ -36,10 +36,15 @@ config plugins and the account prompts that came with it.
 | expo-sqlite | `@op-engineering/op-sqlite` behind `src/db/database.ts` |
 | expo-file-system (`File.pickFileAsync`) | `modules/text-file-picker`, a local module |
 | Expo module API (Swift) | TurboModule (ObjC++) in `modules/spotlight-index` |
-| @expo/vector-icons | `@react-native-vector-icons/ionicons` |
+| @expo/vector-icons | four glyphs drawn from views in `src/ui/icons.tsx` |
 | expo-status-bar | `StatusBar` from react-native |
 | expo prebuild + config plugin | `ios/` is checked in and edited directly |
 | expo-constants, expo-linking, expo-dev-client | dropped, nothing used them |
+
+The icons went to hand-drawn views rather than another icon font because
+`@react-native-vector-icons/common` carries an Expo font-loading path: dead code
+without an Expo runtime, but it still put `ExpoFontLoader` strings in the shipped
+bundle. Four tab glyphs are not worth a dependency that drags the word back in.
 
 ## What this costs
 

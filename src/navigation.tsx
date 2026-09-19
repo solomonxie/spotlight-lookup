@@ -1,4 +1,3 @@
-import Ionicons from '@react-native-vector-icons/ionicons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
@@ -8,6 +7,7 @@ import { EntryScreen } from '@/src/screens/EntryScreen';
 import { LibraryScreen } from '@/src/screens/LibraryScreen';
 import { SearchScreen } from '@/src/screens/SearchScreen';
 import { SettingsScreen } from '@/src/screens/SettingsScreen';
+import { CardsIcon, LibraryIcon, SearchIcon, SettingsIcon } from '@/src/ui/icons';
 import { useTheme } from '@/src/ui/theme';
 
 export type RootStackParamList = {
@@ -45,7 +45,7 @@ function Tabs() {
         component={SearchScreen}
         options={{
           title: 'Look up',
-          tabBarIcon: ({ color, size }) => <Ionicons name="search" color={color} size={size} />,
+          tabBarIcon: ({ color, size }) => <SearchIcon color={color} size={size} />,
         }}
       />
       <Tab.Screen
@@ -53,9 +53,7 @@ function Tabs() {
         component={LibraryScreen}
         options={{
           title: 'Library',
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="library-outline" color={color} size={size} />
-          ),
+          tabBarIcon: ({ color, size }) => <LibraryIcon color={color} size={size} />,
         }}
       />
       <Tab.Screen
@@ -63,9 +61,7 @@ function Tabs() {
         component={CardsScreen}
         options={{
           title: 'Cards',
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="albums-outline" color={color} size={size} />
-          ),
+          tabBarIcon: ({ color, size }) => <CardsIcon color={color} size={size} />,
         }}
       />
       <Tab.Screen
@@ -73,9 +69,7 @@ function Tabs() {
         component={SettingsScreen}
         options={{
           title: 'Settings',
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="options-outline" color={color} size={size} />
-          ),
+          tabBarIcon: ({ color, size }) => <SettingsIcon color={color} size={size} />,
         }}
       />
     </Tab.Navigator>
