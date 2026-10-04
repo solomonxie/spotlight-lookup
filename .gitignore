@@ -34,3 +34,6 @@ npm-debug.*
 # local env files
 .env*.local
 *.pem
+
+# Local signing (real bundle id + team id)
+ios/Local.xcconfig

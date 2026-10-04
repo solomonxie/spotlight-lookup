@@ -1,0 +1,2 @@
+#include "Pods/Target Support Files/Pods-SpotlightLookup/Pods-SpotlightLookup.release.xcconfig"
+#include "Signing.xcconfig"
