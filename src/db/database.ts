@@ -4,6 +4,8 @@ import { normalizeSearchText } from '../lib/normalize';
 import { SCHEMA, SCHEMA_VERSION } from './schema';
 
 const DATABASE_NAME = 'spotlight-lookup.db';
+/** Demo mode's own file; the real one is never opened while it is on. */
+const DEMO_DATABASE_NAME = 'spotlight-lookup-demo.db';
 
 export type Params = Scalar[];
 
@@ -60,14 +62,51 @@ export class Database {
   }
 }
 
-let connection: Promise<Database> | null = null;
+const connections = new Map<string, Promise<Database>>();
+let demoDatabase = false;
 
-export function getDatabase(): Promise<Database> {
-  connection ??= (async () => {
-    const db = new Database(open({ name: DATABASE_NAME }));
-    await migrate(db);
+/** Points every later `getDatabase()` at the demo or the real file. */
+export function setDemoDatabase(on: boolean): void {
+  demoDatabase = on;
+}
+
+let stateConnection: Promise<Database> | null = null;
+
+/** Which store is showing lives outside both, so switching back is always possible. */
+function openAppState(): Promise<Database> {
+  stateConnection ??= (async () => {
+    const db = new Database(open({ name: 'spotlight-lookup-state.db' }));
+    await db.execAsync('CREATE TABLE IF NOT EXISTS state (key TEXT PRIMARY KEY, value TEXT NOT NULL)');
     return db;
   })();
+  return stateConnection;
+}
+
+export async function getAppState(key: string): Promise<string | null> {
+  const db = await openAppState();
+  const row = await db.getFirstAsync<{ value: string }>('SELECT value FROM state WHERE key = ?', [key]);
+  return row?.value ?? null;
+}
+
+export async function setAppState(key: string, value: string): Promise<void> {
+  const db = await openAppState();
+  await db.runAsync(
+    'INSERT INTO state (key, value) VALUES (?, ?) ON CONFLICT(key) DO UPDATE SET value = excluded.value',
+    [key, value]
+  );
+}
+
+export function getDatabase(): Promise<Database> {
+  const name = demoDatabase ? DEMO_DATABASE_NAME : DATABASE_NAME;
+  let connection = connections.get(name);
+  if (!connection) {
+    connection = (async () => {
+      const db = new Database(open({ name }));
+      await migrate(db);
+      return db;
+    })();
+    connections.set(name, connection);
+  }
   return connection;
 }
 

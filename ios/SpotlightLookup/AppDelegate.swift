@@ -34,11 +34,7 @@ class ReactNativeDelegate: RCTDefaultReactNativeFactoryDelegate {
   }
 
   override func bundleURL() -> URL? {
-#if DEBUG
-    RCTBundleURLProvider.sharedSettings().jsBundleURL(forBundleRoot: "index")
-#else
     Bundle.main.url(forResource: "main", withExtension: "jsbundle")
-#endif
   }
 }
 
@@ -61,7 +57,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // Mirrored onto the app delegate for the React Native code that reads it there.
     appDelegate.window = window
 
-    factory.startReactNative(withModuleName: "SpotlightLookup", in: window, launchOptions: nil)
+    // App Store region baked in at build time (`make device STORE=cn`), read by `storeRegion()`.
+    let region = Bundle.main.object(forInfoDictionaryKey: "AppStoreRegion") as? String ?? "us"
+    factory.startReactNative(
+      withModuleName: "SpotlightLookup", in: window,
+      initialProperties: ["storeRegion": region], launchOptions: nil)
 
     // A tap that cold-starts the app arrives here rather than through `scene(_:continue:)`.
     connectionOptions.userActivities.forEach(deliverSpotlightOpen)

@@ -280,6 +280,7 @@
 					"-lc++",
 				);
 				PRODUCT_NAME = SpotlightLookup;
+				STORE = us;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SWIFT_OBJC_BRIDGING_HEADER = "SpotlightLookup/SpotlightLookup-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -309,6 +310,7 @@
 					"-lc++",
 				);
 				PRODUCT_NAME = SpotlightLookup;
+				STORE = us;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SWIFT_OBJC_BRIDGING_HEADER = "SpotlightLookup/SpotlightLookup-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;

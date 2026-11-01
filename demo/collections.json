@@ -1,0 +1,64 @@
+[
+  {
+    "name": "English → 中文",
+    "kind": "dictionary",
+    "language": "en",
+    "targetLanguage": "zh-Hans",
+    "source": "english-chinese",
+    "added": "@today-41 20:15"
+  },
+  {
+    "name": "中文 → English",
+    "kind": "dictionary",
+    "language": "zh-Hans",
+    "targetLanguage": "en",
+    "source": "chinese-english",
+    "added": "@today-41 20:16"
+  },
+  {
+    "name": "成语 Idioms",
+    "kind": "flashcards",
+    "language": "zh-Hans",
+    "targetLanguage": "en",
+    "source": "flashcards",
+    "added": "@today-30 21:02"
+  },
+  {
+    "name": "HSK 4 · this week",
+    "kind": "flashcards",
+    "language": "zh-Hans",
+    "targetLanguage": "en",
+    "added": "@today-6 07:40",
+    "entries": [
+      { "term": "安排", "reading": "ān pái", "definition": "to arrange; to plan; arrangement", "example": "周末的行程我已经安排好了。", "tags": "HSK4, verb", "added": "@today-6 07:42" },
+      { "term": "经验", "reading": "jīng yàn", "definition": "experience", "example": "她有十年的教学经验。", "tags": "HSK4, noun", "added": "@today-6 07:44" },
+      { "term": "提醒", "reading": "tí xǐng", "definition": "to remind; to warn", "example": "明天早上提醒我带护照。", "tags": "HSK4, verb", "added": "@today-5 08:03" },
+      { "term": "适合", "reading": "shì hé", "definition": "to fit; to suit", "example": "这件外套很适合你。", "tags": "HSK4, verb", "added": "@today-5 08:05" },
+      { "term": "坚持", "reading": "jiān chí", "definition": "to persist; to keep at it", "example": "每天坚持练习半小时。", "tags": "HSK4, verb", "added": "@today-4 22:31" },
+      { "term": "原来", "reading": "yuán lái", "definition": "originally; so it turns out", "example": "原来你也住在这附近！", "tags": "HSK4, adverb", "added": "@today-3 07:55" },
+      { "term": "麻烦", "reading": "má fan", "definition": "trouble; to bother someone", "example": "麻烦你帮我拿一下。", "tags": "HSK4", "added": "@today-3 07:57" },
+      { "term": "仔细", "reading": "zǐ xì", "definition": "careful; attentive", "example": "签合同前要仔细看一遍。", "tags": "HSK4, adjective", "added": "@today-2 21:10" },
+      { "term": "值得", "reading": "zhí de", "definition": "to be worth; to deserve", "example": "这本书值得一读。", "tags": "HSK4, verb", "added": "@today-1 08:20" },
+      { "term": "尤其", "reading": "yóu qí", "definition": "especially; particularly", "example": "我喜欢水果，尤其是芒果。", "tags": "HSK4, adverb", "added": "@today-1 08:22" },
+      { "term": "随便", "reading": "suí biàn", "definition": "as you like; casual; careless", "example": "随便坐，别客气。", "tags": "HSK4", "added": "@today 07:48" },
+      { "term": "准时", "reading": "zhǔn shí", "definition": "on time; punctual", "example": "会议九点准时开始。", "tags": "HSK4, adjective", "added": "@today 07:51" }
+    ]
+  },
+  {
+    "name": "Tokyo trip phrases",
+    "kind": "flashcards",
+    "language": "ja",
+    "targetLanguage": "en",
+    "added": "@today-12 19:30",
+    "entries": [
+      { "term": "すみません", "reading": "sumimasen", "definition": "excuse me; sorry; thank you (for trouble)", "example": "すみません、駅はどこですか。", "tags": "travel, polite", "added": "@today-12 19:31" },
+      { "term": "いくらですか", "reading": "ikura desu ka", "definition": "how much is it?", "example": "このお弁当はいくらですか。", "tags": "travel, shopping", "added": "@today-12 19:33" },
+      { "term": "予約", "reading": "yoyaku", "definition": "reservation; booking", "example": "七時に二名で予約しています。", "tags": "travel, restaurant", "added": "@today-11 21:05" },
+      { "term": "乗り換え", "reading": "norikae", "definition": "transfer (between trains)", "example": "新宿で山手線に乗り換えます。", "tags": "travel, transit", "added": "@today-10 08:12" },
+      { "term": "おすすめ", "reading": "osusume", "definition": "recommendation", "example": "おすすめは何ですか。", "tags": "travel, restaurant", "added": "@today-8 20:40" },
+      { "term": "大丈夫", "reading": "daijōbu", "definition": "all right; no problem", "example": "袋は大丈夫です。", "tags": "travel", "added": "@today-7 18:15" },
+      { "term": "改札", "reading": "kaisatsu", "definition": "ticket gate", "example": "東口の改札で待っています。", "tags": "travel, transit", "added": "@today-2 12:30" },
+      { "term": "お会計", "reading": "okaikei", "definition": "the bill, please", "example": "すみません、お会計お願いします。", "tags": "travel, restaurant", "added": "@today-1 21:45" }
+    ]
+  }
+]

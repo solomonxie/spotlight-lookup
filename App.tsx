@@ -7,22 +7,27 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { addOpenListener, takePendingOpen } from '@/modules/spotlight-index';
 import { getDatabase } from '@/src/db/database';
 import { SETTINGS_KEYS, getFlag } from '@/src/db/settings';
+import { isDemo, loadDemo, useDemo } from '@/src/lib/demo';
 import { seedIfEmpty } from '@/src/lib/seed';
+import { setStoreRegion } from '@/src/lib/storeRegion';
 import { RootNavigator, type RootStackParamList } from '@/src/navigation';
 import { syncSpotlight } from '@/src/spotlight/sync';
 import { useTheme } from '@/src/ui/theme';
 
 const navigationRef = createNavigationContainerRef<RootStackParamList>();
 
-export default function App() {
+export default function App({ storeRegion }: { storeRegion?: string }) {
+  setStoreRegion(storeRegion);
   const { colors, dark } = useTheme();
   const [ready, setReady] = useState(false);
+  const demo = useDemo();
 
   useEffect(() => {
     let cancelled = false;
     (async () => {
+      await loadDemo();
       await getDatabase();
-      await seedIfEmpty();
+      if (!isDemo()) await seedIfEmpty();
       if (cancelled) return;
       setReady(true);
       if (await getFlag(SETTINGS_KEYS.autoSync, true)) {
@@ -68,7 +73,7 @@ export default function App() {
     <GestureHandlerRootView style={{ flex: 1 }}>
       <SafeAreaProvider>
         <StatusBar barStyle={dark ? 'light-content' : 'dark-content'} />
-        <NavigationContainer ref={navigationRef}>
+        <NavigationContainer ref={navigationRef} key={demo.revision}>
           <RootNavigator />
         </NavigationContainer>
       </SafeAreaProvider>

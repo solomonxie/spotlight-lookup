@@ -5,6 +5,7 @@ import { Alert, ScrollView, StyleSheet, Switch, Text, View } from 'react-native'
 import { isSpotlightAvailable } from '@/modules/spotlight-index';
 import { countEntries } from '@/src/db/entries';
 import { SETTINGS_KEYS, getFlag, setFlag } from '@/src/db/settings';
+import { resetDemo, setDemo, useDemo } from '@/src/lib/demo';
 import { SyncProgress, clearSpotlightIndex, syncSpotlight } from '@/src/spotlight/sync';
 import { Banner, Button, Card, SectionHeader } from '@/src/ui/components';
 import { spacing, useTheme } from '@/src/ui/theme';
@@ -17,6 +18,7 @@ export function SettingsScreen() {
   const [progress, setProgress] = useState<SyncProgress | null>(null);
   const [busy, setBusy] = useState(false);
   const [revision, setRevision] = useState(0);
+  const demo = useDemo();
 
   const refresh = useCallback(() => setRevision((value) => value + 1), []);
   useFocusEffect(refresh);
@@ -66,6 +68,9 @@ export function SettingsScreen() {
     <ScrollView
       style={{ backgroundColor: colors.background }}
       contentContainerStyle={styles.screen}>
+      {demo.on ? (
+        <Banner text="Demo mode: sample collections in a separate store. Spotlight indexing is paused and your own entries are untouched." />
+      ) : null}
       {!available ? (
         <Banner
           tone="danger"
@@ -109,10 +114,41 @@ export function SettingsScreen() {
       </Card>
 
       <View style={styles.actions}>
-        <Button title="Sync now" onPress={() => sync(false)} loading={busy} />
-        <Button title="Rebuild index" variant="secondary" onPress={() => sync(true)} disabled={busy} />
-        <Button title="Clear Spotlight index" variant="danger" onPress={clear} disabled={busy} />
+        <Button title="Sync now" onPress={() => sync(false)} loading={busy} disabled={demo.on} />
+        <Button title="Rebuild index" variant="secondary" onPress={() => sync(true)} disabled={busy || demo.on} />
+        <Button title="Clear Spotlight index" variant="danger" onPress={clear} disabled={busy || demo.on} />
       </View>
+
+      <SectionHeader
+        title="Demo"
+        info={{
+          title: 'Demo mode',
+          body:
+            'Switches to sample dictionaries and flashcards in their own store, for screenshots. ' +
+            'Nothing is indexed while it is on; turn it off to get your own collections back.',
+        }}
+      />
+      <Card>
+        <View style={styles.row}>
+          <Text style={[styles.label, { color: colors.text }]}>Demo mode</Text>
+          <Switch
+            value={demo.on}
+            trackColor={{ true: colors.accent, false: colors.border }}
+            onValueChange={(value) => {
+              setDemo(value).catch((error) => Alert.alert('Demo mode', String(error)));
+            }}
+          />
+        </View>
+      </Card>
+      {demo.on ? (
+        <View style={styles.actions}>
+          <Button
+            title="Reset demo data"
+            variant="secondary"
+            onPress={() => resetDemo().catch((error) => Alert.alert('Demo mode', String(error)))}
+          />
+        </View>
+      ) : null}
     </ScrollView>
   );
 }

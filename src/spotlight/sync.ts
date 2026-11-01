@@ -8,6 +8,7 @@ import {
 } from '@/modules/spotlight-index';
 
 import { getDatabase } from '../db/database';
+import { isDemo } from '../lib/demo';
 
 /** Core Spotlight rejects very large batches, and smaller ones keep the UI responsive. */
 const BATCH_SIZE = 400;
@@ -78,6 +79,8 @@ export async function syncSpotlight(
   options: { rebuild?: boolean; onProgress?: (progress: SyncProgress) => void } = {}
 ): Promise<SyncResult> {
   const { rebuild = false, onProgress } = options;
+  // Demo entries never reach the system index, and the real ones are left as they are.
+  if (isDemo()) return { available: true, indexed: 0, removed: 0 };
   if (!isSpotlightAvailable()) {
     return { available: false, indexed: 0, removed: 0 };
   }
@@ -169,6 +172,7 @@ export async function syncSpotlight(
 }
 
 export async function clearSpotlightIndex(): Promise<void> {
+  if (isDemo()) return;
   const db = await getDatabase();
   await deleteAll();
   await db.execAsync('UPDATE entries SET indexed_at = NULL; DELETE FROM index_tombstones;');

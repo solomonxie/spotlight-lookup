@@ -24,6 +24,14 @@ Both directions are indexed, so searching `coffee` in Spotlight returns `coffee 
 `咖啡 → coffee`. It is ordinary data: edit it, switch it off per collection, or delete it from
 Library once your own dictionaries are in. The same files are in `assets/demo/` and import as-is.
 
+## Demo mode
+
+- Settings → Demo mode: switches instantly to a separate database (`spotlight-lookup-demo.db`) with
+  sample dictionaries and flashcard decks; your own collections are untouched. Nothing is indexed
+  into or removed from Spotlight while it is on. Reset demo data restores the preset.
+- Preset: `demo/collections.json` (dictionaries reuse `assets/demo/`; decks carry relative dates
+  like `"@today-3 07:55"` so Recent stays current).
+
 ## What it does
 
 - **Anything you add is searchable from the system.** Entries are pushed into Core Spotlight with the
@@ -43,12 +51,14 @@ Library once your own dictionaries are in. The same files are in `assets/demo/` 
 ```sh
 npm install
 npm run pods       # once, and after any native dependency changes
-npm run ios        # builds, installs and starts Metro
+npm run ios        # Release build → connected iPhone (no Metro server)
+make device STORE=cn   # same, for the China App Store; default STORE=us (Canada/US)
 ```
 
+`STORE` lands in Info.plist `AppStoreRegion` and reaches JS as `storeRegion()`.
+
 Core Spotlight is a native framework, so there is no JavaScript-only way to run this: the local
-module in `modules/spotlight-index` is compiled into the app. `npm start` alone reloads JavaScript
-into an app that is already installed.
+module in `modules/spotlight-index` is compiled into the app.
 
 ## Importing a dictionary
 
